@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>PINCRED | Soluções Financeiras</title>
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+
+    <nav class="navbar navbar-expand-xl navbar-light bg-light" id="menu_principal">
+        <a class="navbar-brand" href="#"><%= image_tag('logo_pincred.png',class: 'logo_topo', alt: 'Logo Pincred')%></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#nossos_produtos">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#informacoes">Informações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#quem_somos">Quem Somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contato">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="home">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner_head">
+                    <% @users_office_images.where(:id => 1).each_with_index do |image|%>
+                    <%= image_tag(image.avatar,class: 'img-fluid', alt: 'Banner Topo')%>
+                    <span class="text_banner">
+                            <h2><%= image.title %></h2>
+                            <h2><%= image.subtitle %></h2>
+                            <ul>
+                              <li><%= image.content_one %></li>
+                              <li><%= image.content_two %></li>
+                              <li><%= image.content %></li>
+                            </ul>
+                            <a href="#" class="button_saiba_mais">+ SAIBA MAIS</a>
+                        </span>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container img_nossos_produtos" id="nossos_produtos">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="separador"></div>
+                <div class="nossos_produtos">
+                 <h2>Nossos Produtos</h2>
+                <% @users_office_products.each do |product|%>
+                    <h3><%= product.title %></h3>
+                    <p><%= product.subtitle %></p>
+                <% end %>    
+                    <a href="#" class="button_saiba_mais">+ SAIBA MAIS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="informacoes">
+        <br /><br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="separador"></div>
+                <div class="informacoes">
+                   <% @users_office_images.where(:id => 2).each_with_index do |image|%>
+                    <%= image_tag(image.avatar,class: 'img', alt: 'Informações')%>
+                    <% end %>
+                    <span class="text_info">
+                            <h2>Informações</h2>
+                            <h4>Demonstrações <br />Financeiras</h4>
+                            <a href="#">2019/2020</a><a href="#">2020/2021</a>
+                            <h4>Política de <br />Responsabilidade <br />Socioambiental</h4>
+                            <a href="#">Baixe aqui</a>
+                            <h4>Tabela de Tarifas</h4>
+                            <a href="#">2019<a href="#">2020</a>
+                            <h4>Gestão de Riscos</h4>
+                            <a href="#">Política de Gestão</a>
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container img_quem_somos" id="quem_somos">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="separador"></div>
+                <div class="quem_somos">
+                    <h2>Quem Somos</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                          <% @users_office_whos.where(:id => 1).each_with_index do |who|%>
+                            <h3><%= who.title%></h3>
+                            <p><%= who.subtitle%></p>
+                           <% end %> 
+                        </div>
+                        <div class="col-md-4">
+                        <% @users_office_whos.where(:id => 2).each_with_index do |who|%>
+                            <h3><%= who.title%></h3>
+                            <p><%= who.subtitle%></p>
+                            <% end %>
+                            <% @users_office_whos.where(:id => 3).each_with_index do |who|%>
+                            <h3><%= who.title%></h3>
+                            <p><%= who.subtitle%></p>
+                            <% end %>
+                        </div>
+                        <div class="col-md-4">
+                        <% @users_office_whos.where(:id => 4).each_with_index do |who|%>
+                           <h3><%= who.title%></h3>
+                           <p> <%= who.subtitle %></p>
+                           <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="contato">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="separador"></div>
+                <div class="contato">
+                    <% @users_office_images.where(:id => 3).each_with_index do |image|%>
+                    <%= image_tag(image.avatar,class: 'img', alt: 'Contato')%>
+                    <% end %>
+                    <div class="btn_contato">
+                        <h2>Contato</h2>
+                        <a href="#" class="button_contato">+ FALE
+                                    CONOSCO</a>
+                        <a href="#" class="button_contato">+ OUVIDORIA</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="line"></div>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                      <% @users_office_footers.each do |footer|%>
+                        <p><%= footer.title %></p>
+                        <p><%= footer.subtitle %></p>
+                        <p><%= footer.phone_one%></p>
+                        <p><%= footer.phone_two%></p>
+                        <p><%= footer.email%></p>
+                      <% end %>  
+                    </div>
+
+                    <div class="col-md-3">
+                        <%= image_tag('logo_pincred_white.png',class: 'img-fluid', alt: 'Logo')%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <ul>
+                            <li><a href="#">Termo de Uso</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Ouvidoria</a></li>
+                            <li><a href="#">Segurança</a></li>
+                            <li><a href="#">Canal de Denúncia</a></li>
+                            <li><a href="#">Atendimento</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

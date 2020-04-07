@@ -1,0 +1,2 @@
+module UsersOffice::FootersHelper
+end

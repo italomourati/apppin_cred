@@ -1,0 +1,29 @@
+Rails.application.routes.draw do
+  namespace :users_office do
+    resources :whos
+  end
+  namespace :users_office do
+    resources :products
+  end
+  namespace :users_office do
+    resources :footers
+  end
+  namespace :users_office do
+    resources :images
+  end
+  namespace :users_office do
+    get 'users/index'
+    resources :users
+  end
+  devise_for :users
+  namespace :users_office do
+    get 'welcome/index'
+  end
+  namespace :site do
+    get 'welcome/index'
+  end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  root to: 'site/welcome#index'
+
+ end

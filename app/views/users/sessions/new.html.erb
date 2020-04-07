@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+
+    <link rel="icon" href="Favicon.png">
+
+
+</head>
+<body>
+
+<br/>
+<br/>
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <% if flash.present? %>
+                      <% flash.each do |key, value| %>
+                        <div class="flash <%= key %>"><%= value %></div>
+                       <% end %>
+                       <% end %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div> 
+                <div class="card">
+                    <div class="card-header text-center"> <%= image_tag("logo_pincred.png", class: 'logo_topo', alt: 'logo Pincred')%> </div>
+                    
+                    <div class="card-body">
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right"> Email : </label>
+                                <div class="col-md-6">
+                                     <%= f.email_field :email, autofocus: true, type: 'text' , class: 'form-control', placeholder: 'Seu Email', value: '' ,id: 'email_address'%>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right"> Senha :</label>
+                                <div class="col-md-6">
+                                     <%= f.password_field :password, type: 'password' , class: 'form-control', placeholder: 'Sua Senha', value: '', id: 'password' %>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <%= render "users/shared/links" %>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 offset-md-4">
+                              <%= f.submit "Entrar" ,class: 'btn btn-primary'%>
+                            </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+
+</body>
+</html>

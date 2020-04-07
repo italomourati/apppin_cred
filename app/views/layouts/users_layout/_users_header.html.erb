@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <title>Painel Administrativo</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a class="navbar-brand" href="#">Painel Administrativo PINCRED </a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+     </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Home', users_office_welcome_index_path, class: 'nav-link'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Imagens', users_office_images_path , class: 'nav-link'%>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Informações</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item disabled" href="#">Acesso as Informações das Páginas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Correspondentes</a>
+          <a class="dropdown-item" href="#">Demonstrações Financeiras</a>
+          <a class="dropdown-item" href="#">Educação Financeira</a>
+          <a class="dropdown-item" href="#">Politica Responsabilidade Socioambiental - PRS </a>
+          <a class="dropdown-item" href="#">Tabelas de Riscos</a>
+          <a class="dropdown-item" href="#">Sistema de Informações de Crédito - SCR </a>
+          <a class="dropdown-item" href="#">Tabelas de Tarifas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Acesso as informaçoes dos Canais</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Contatos</a>
+          <a class="dropdown-item" href="#">Denuncias</a>
+        </div>
+       <li class="nav-item">
+        <%= link_to 'Produtos', users_office_products_path , class: 'nav-link'%>
+      </li>
+        <li class="nav-item">
+        <%= link_to 'Quem Somos', users_office_whos_path , class: 'nav-link'%>
+      </li>
+       </li>
+        <li class="nav-item">
+        <%= link_to 'Rodapé', users_office_footers_path , class: 'nav-link'%>
+      </li>
+      </li>
+        <li class="nav-item">
+        <%= link_to 'Usuários', users_office_users_index_path , class: 'nav-link'%>
+      </li>
+    </ul>
+   
+    <form class="form-inline my-2 my-lg-0">
+      
+      <%= link_to 'Sair', destroy_user_session_path,method: :delete ,class: 'btn btn-outline-danger my-2 my-sm-0'%>
+      
+    </form>
+  </div>
+</nav>
+
+</body>
+</html>

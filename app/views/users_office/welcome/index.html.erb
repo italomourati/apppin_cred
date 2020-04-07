@@ -1,0 +1,56 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+   
+    <title>Painel Administrativo</title>
+</head>
+<body>
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Seja bem vindo, <strong> <%= current_user.email %> </strong>! Sessão iniciada <strong> <%= I18n.l Time.now %>. </strong> </div>
+                      <div class="card-body">
+                        
+      
+                                <div class="form-group row">
+                                 
+                                 <label for="email_address" class="col-md-4 col-form-label text-md-center"> Você, esta em um ambiente seguro ! <%= current_user.email %> </label>
+                                 
+                                
+                                   <div class="col-md-6">
+                                <li> Você, esta em um ambiente seguro ! <%= current_user.email %> <br/>
+
+                                <li>
+                                 <%= current_user.email %>, sem permissão para exluir usuários , para maiores informações contante o C.I da PINTOS! 
+                                </li>
+
+                                   </div>
+                               
+                               </div>
+                        
+                      </div>
+                    </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+</main>
+
+</body>
+</html>
+

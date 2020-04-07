@@ -5,10 +5,10 @@ lock "~> 3.11.2"
 #set :repo_url, "git@example.com:me/my_repo.git"
 
 set :application, "apppin_cred"
-set :repo_url, 'ggit@github.com:daniel8486/apppin_cred.git'
+set :repo_url, 'git@github.com:daniel8486/apppin_cred.git'
 set :deploy_to, '/var/www/apppin_cred'
 set :branch, 'master'
-set: keep_releases, 5
+set :keep_releases, 5
 set :format, :airbrussh
 set :log_level, :debug
 append :linked_files, "config/database.yml"

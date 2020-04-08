@@ -10,4 +10,4 @@ worker_processes 4
 timeout 30 
 preload_app true
 
-listen '/tmp/pincred.sock', backlog: 64
+listen '/tmp/apppin_cred.sock', backlog: 64

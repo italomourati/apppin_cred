@@ -61,6 +61,6 @@
 #   }
 
 
-role :app, %w{root@161.35.6.27} 
-role :web, %w{root@161.35.6.27} 
-role :db, %w{root@161.35.6.27}
+role :app, %w{deploy@206.81.1.187} 
+role :web, %w{deploy@206.81.1.187}  
+role :db, %w{deploy@206.81.1.187} 

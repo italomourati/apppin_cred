@@ -10,6 +10,8 @@ module ApppinCred
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    
+    config.secret_key_base = '80eb848ae2194af1487664f1d5839e5b'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

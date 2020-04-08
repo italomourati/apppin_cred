@@ -4,7 +4,7 @@ namespace :dev do
 
   desc "Configurando.............. Ambiente ........."
   task setup: :environment do
-    if Rails.env.development?
+    if Rails.env.production?
       show_spinner("Apagando Banco de Dados") { %x(rails db:drop) }
       show_spinner("Criando Banco de Dados") { %x(rails db:create) }
       show_spinner("Migrando Banco de Dados") { %x(rails db:migrate) }

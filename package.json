@@ -17,5 +17,9 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:daniel8486/apppin_cred.git",
+  "author": "Lojas Pintos <danielmatos@lojaspintos.com.br>",
+  "license": "MIT"
 }

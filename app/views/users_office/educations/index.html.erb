@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users Office Educations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_office_educations.each do |users_office_education| %>
+      <tr>
+        <td><%= users_office_education.title %></td>
+        <td><%= users_office_education.content %></td>
+        <td><%= link_to 'Show', users_office_education %></td>
+        <td><%= link_to 'Edit', edit_users_office_education_path(users_office_education) %></td>
+        <td><%= link_to 'Destroy', users_office_education, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Users Office Education', new_users_office_education_path %>

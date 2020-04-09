@@ -1,0 +1,2 @@
+module UsersOffice::CorrespondetsHelper
+end

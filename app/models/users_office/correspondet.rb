@@ -1,0 +1,3 @@
+class UsersOffice::Correspondet < ApplicationRecord
+  has_rich_text :content
+end

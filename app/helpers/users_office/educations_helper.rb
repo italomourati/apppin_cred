@@ -1,0 +1,2 @@
+module UsersOffice::EducationsHelper
+end

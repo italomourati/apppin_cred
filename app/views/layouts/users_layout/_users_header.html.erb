@@ -29,9 +29,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item disabled" href="#">Acesso as Informações das Páginas</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Correspondentes</a>
-          <a class="dropdown-item" href="#">Demonstrações Financeiras</a>
-          <a class="dropdown-item" href="#">Educação Financeira</a>
+          <%= link_to 'Correspondentes', users_office_correspondets_path, class: 'dropdown-item'%>
+          <%= link_to 'Demonstrações Financeiras', users_office_demos_path, class: 'dropdown-item'%>
+          <%= link_to 'Educação Financeira', users_office_educations_path, class: 'dropdown-item'%>
           <a class="dropdown-item" href="#">Politica Responsabilidade Socioambiental - PRS </a>
           <a class="dropdown-item" href="#">Tabelas de Riscos</a>
           <a class="dropdown-item" href="#">Sistema de Informações de Crédito - SCR </a>

@@ -63,8 +63,7 @@
                                             <% end %>
                                           </td>
                                           <td style="width: 100px">
-          
-                                          <%= link_to users_office_whos_path, method: :delete, data: { confirm: 'Tem Certeza?' } , class: "btn btn-warning btn-circle" do %>
+                                          <%= link_to users_office_whos_path(@users_office_who), class: "btn btn-warning btn-circle" do %>
                                           <i class="fa fa-minus"></i>
                                           <% end %>
                                           </td>

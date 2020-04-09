@@ -56,7 +56,7 @@ end
 
 #group :production do
 # gem 'mysql2' #, '~> 0.3.18' 
-# gem "unicorn"
+# gem 'unicorn'
 
 #end
 

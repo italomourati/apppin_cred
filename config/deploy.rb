@@ -6,7 +6,7 @@ lock "~> 3.13.0"
 
 set :application, 'apppin_cred'
 set :repo_url, 'git@github.com:daniel8486/apppin_cred.git'
-set :deploy_to, '/var/www/apppin_cred'
+set :deploy_to, '/var/www/apppin_cred/'
 set :branch, 'master'
 set :keep_releases, 5
 set :format, :airbrussh

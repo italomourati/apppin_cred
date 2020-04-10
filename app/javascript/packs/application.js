@@ -57,5 +57,6 @@ $('a[href^="#"]').on('click', function(e) {
       $(document).on("scroll");
   });
 });
+
 require("trix")
 require("@rails/actiontext")

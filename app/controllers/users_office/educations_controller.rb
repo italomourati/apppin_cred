@@ -1,4 +1,4 @@
-class UsersOffice::EducationsController < ApplicationController
+class UsersOffice::EducationsController < UsersOfficeController
   before_action :set_users_office_education, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/educations

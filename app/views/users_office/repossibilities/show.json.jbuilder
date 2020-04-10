@@ -1,0 +1,1 @@
+json.partial! "users_office_repossibilities/users_office_repossibility", users_office_repossibility: @users_office_repossibility

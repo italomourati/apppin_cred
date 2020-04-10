@@ -1,3 +1,6 @@
+
+<p id="notice"><%= notice %></p>
+
 <br/>
 <br/>
 <br/>
@@ -30,7 +33,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><strong> <h3> Mostrando Educação Financeira </h3> </strong>  </div>
+                    <div class="card-header"><strong> <h3> Mostrando Sistema de Informações de Crédito - SCR </h3> </strong>  </div>
                     <div class="card-body">
                           
                             <div class="form-group row">
@@ -41,11 +44,11 @@
                                           <tr>
                                            <th>#</th>
                                            <th>Titulo</th>
-                                           <th>Educação Financeira</th>
+                                           <th>Conteudo</th>
                                            <th>Editar</th>
                                            <th>Voltar </th>
                                            <td style="width: 100px">
-                                          <%= link_to new_users_office_education_path, class:"btn btn-success btn-circle" do %>
+                                          <%= link_to new_users_office_credit_path, class:"btn btn-success btn-circle" do %>
                                           <i class="fa fa-plus"></i>
                                           <% end %>
                                           </td>
@@ -54,17 +57,17 @@
                                          <tbody>
                                          <%# @users.each do |user| %>
                                           <tr>
-                                          <td><%= @users_office_education.id%></td>
-                                          <td><%= @users_office_education.title%></td>
-                                          <td><%= @users_office_education.content%></td>
+                                          <td><%= @users_office_credit.id%></td>
+                                          <td><%= @users_office_credit.title%></td>
+                                          <td><%= @users_office_credit.content%></td>
                                           <td style="width: 100px">
-                                          <%= link_to edit_users_office_education_path(@users_office_education), class:"btn btn-primary btn-circle" do %>
+                                          <%= link_to edit_users_office_credit_path(@users_office_credit), class:"btn btn-primary btn-circle" do %>
                                              <i class="fa fa-mail-reply"></i>
                                             <% end %>
                                           </td>
                                           <td style="width: 100px">
           
-                                          <%= link_to users_office_educations_path, class: "btn btn-warning btn-circle" do %>
+                                          <%= link_to users_office_credits_path, class: "btn btn-warning btn-circle" do %>
                                           <i class="fa fa-minus"></i>
                                           <% end %>
                                           </td>

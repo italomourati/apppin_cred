@@ -1,29 +1,89 @@
-<p id="notice"><%= notice %></p>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-<h1>Users Office Educations</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+     
 
-  <tbody>
-    <% @users_office_educations.each do |users_office_education| %>
-      <tr>
-        <td><%= users_office_education.title %></td>
-        <td><%= users_office_education.content %></td>
-        <td><%= link_to 'Show', users_office_education %></td>
-        <td><%= link_to 'Edit', edit_users_office_education_path(users_office_education) %></td>
-        <td><%= link_to 'Destroy', users_office_education, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <link rel="icon" href="Favicon.png">
 
-<br>
 
-<%= link_to 'New Users Office Education', new_users_office_education_path %>
+    <title>Painel Administrativo</title>
+</head>
+<body>
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><strong> <h3> Listando Educação Financeira </h3> </strong>  </div>
+                    <div class="card-body">
+                          
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                          <tr>
+                                          <th>#</th>
+                                          <th>Titulo</th>
+                                          <th>Conteudo</th>
+                                          <th>Editar</th>
+                                          <th>Excluir</th>
+                                           <td style="width: 100px">
+                                          <%= link_to new_users_office_education_path , class:"btn btn-success btn-circle" do %>
+                                          <i class="fa fa-plus"></i>
+                                          <% end %>
+                                          </td>
+                                         </tr>
+                                       </thead>
+                                         <tbody>
+                                         <% @users_office_educations.each do |users_office_education| %>
+                                          <tr>
+                                          <td><%= users_office_education.id%></td>
+                                           <td><%= users_office_education.title %></td>
+                                            <td><%= users_office_education.content %></td>
+                                          <td style="width: 100px">
+                                          <%= link_to edit_users_office_education_path(users_office_education), class:"btn btn-primary btn-circle" do %>
+                                             <i class="fa fa-edit"></i>
+                                            <% end %>
+                                          </td>
+                                          <td style="width: 100px">
+                                          <%= link_to users_office_education, method: :delete, data: { confirm: 'Tem Certeza?' } , class: "btn btn-danger btn-circle" do %>
+                                          <%#= link_to 'Destroy', users_office_image, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                          <i class="fa fa-minus"></i>
+                                          <% end %>
+                                          </td>
+                                          
+                                          </tr>
+                                          <% end %>
+                                          </tbody>
+                                          </table>
+                                            
+                                             <%#= paginate @users, class: 'text-center' %>
+                                           
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+   
+</main>

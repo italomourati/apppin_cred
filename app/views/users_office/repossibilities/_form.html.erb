@@ -37,19 +37,18 @@
                     <div class="card-body">
                             <div class="form-group row">
                                 <div class="col-md-12"> 
-                                <%= form_with(model: users_office_education, local: true) do |form| %>
-                                      <% if users_office_education.errors.any? %>
-                                        <div id="error_explanation">
-                                          <h2><%= pluralize(users_office_education.errors.count, "error") %> prohibited this users_office_education from being saved:</h2>
+                                <%= form_with(model: users_office_repossibility, local: true) do |form| %>
+                                        <% if users_office_repossibility.errors.any? %>
+                                          <div id="error_explanation">
+                                            <h2><%= pluralize(users_office_repossibility.errors.count, "error") %> prohibited this users_office_repossibility from being saved:</h2>
 
-                                          <ul>
-                                            <% users_office_education.errors.full_messages.each do |message| %>
-                                              <li><%= message %></li>
-                                            <% end %>
-                                          </ul>
-                                        </div>
-                                      <% end %>
-
+                                            <ul>
+                                              <% users_office_repossibility.errors.full_messages.each do |message| %>
+                                                <li><%= message %></li>
+                                              <% end %>
+                                            </ul>
+                                          </div>
+                                        <% end %>
                                         <div class="form-group">
                                          <%= form.label :title %>
                                          <%= form.text_field :title, class:"form-control",placeholder:"Insira um Titulo a Imagem" %>

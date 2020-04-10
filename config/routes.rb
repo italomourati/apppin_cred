@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :credits
+  end
+  namespace :users_office do
+    resources :risks
+  end
+  namespace :users_office do
+    resources :repossibilities
+  end
+  namespace :users_office do
     resources :educations
   end
   namespace :users_office do

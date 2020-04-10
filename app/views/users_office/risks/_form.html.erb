@@ -37,13 +37,13 @@
                     <div class="card-body">
                             <div class="form-group row">
                                 <div class="col-md-12"> 
-                                <%= form_with(model: users_office_education, local: true) do |form| %>
-                                      <% if users_office_education.errors.any? %>
+                                <%= form_with(model: users_office_risk, local: true) do |form| %>
+                                      <% if users_office_risk.errors.any? %>
                                         <div id="error_explanation">
-                                          <h2><%= pluralize(users_office_education.errors.count, "error") %> prohibited this users_office_education from being saved:</h2>
+                                          <h2><%= pluralize(users_office_risk.errors.count, "error") %> prohibited this users_office_risk from being saved:</h2>
 
                                           <ul>
-                                            <% users_office_education.errors.full_messages.each do |message| %>
+                                            <% users_office_risk.errors.full_messages.each do |message| %>
                                               <li><%= message %></li>
                                             <% end %>
                                           </ul>

@@ -1,0 +1,2 @@
+module UsersOffice::CreditsHelper
+end

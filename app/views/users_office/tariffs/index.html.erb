@@ -30,7 +30,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><strong> <h3> Listando Politica de Responsabilidade Socioambinetal </h3> </strong>  </div>
+                    <div class="card-header"><strong> <h3> Listando Tabelas de Tarifas </h3> </strong>  </div>
                     <div class="card-body">
                           <div class="alert alert-success alert-dismissible fade show" role="alert" id="notice">
                               <strong> <%= notice %> </strong>
@@ -50,25 +50,25 @@
                                           <th>Editar</th>
                                           <th>Excluir</th>
                                            <td style="width: 100px">
-                                          <%= link_to new_users_office_repossibility_path , class:"btn btn-success btn-circle" do %>
+                                          <%= link_to new_users_office_tariff_path , class:"btn btn-success btn-circle" do %>
                                           <i class="fa fa-plus"></i>
                                           <% end %>
                                           </td>
                                          </tr>
                                        </thead>
                                          <tbody>
-                                         <% @users_office_repossibilities.each do |users_office_repossibility| %>
+                                         <% @users_office_tariffs.each do |users_office_tariff| %>
                                           <tr>
-                                          <td><%= users_office_repossibility.id%></td>
-                                           <td><%= users_office_repossibility.title %></td>
-                                            <td><%= users_office_repossibility.content %></td>
+                                          <td><%= users_office_tariff.id%></td>
+                                           <td><%= users_office_tariff.title %></td>
+                                            <td><%= users_office_tariff.content %></td>
                                           <td style="width: 100px">
-                                          <%= link_to edit_users_office_repossibility_path(users_office_repossibility), class:"btn btn-primary btn-circle" do %>
+                                          <%= link_to edit_users_office_tariff_path(users_office_tariff), class:"btn btn-primary btn-circle" do %>
                                              <i class="fa fa-edit"></i>
                                             <% end %>
                                           </td>
                                           <td style="width: 100px">
-                                          <%= link_to users_office_repossibility, method: :delete, data: { confirm: 'Tem Certeza?' } , class: "btn btn-danger btn-circle" do %>
+                                          <%= link_to users_office_tariff, method: :delete, data: { confirm: 'Tem Certeza?' } , class: "btn btn-danger btn-circle" do %>
                                           <%#= link_to 'Destroy', users_office_image, method: :delete, data: { confirm: 'Are you sure?' } %>
                                           <i class="fa fa-minus"></i>
                                           <% end %>

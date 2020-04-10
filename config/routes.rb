@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :tariffs
+  end
+  namespace :users_office do
     resources :credits
   end
   namespace :users_office do

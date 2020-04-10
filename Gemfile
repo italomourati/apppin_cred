@@ -51,14 +51,19 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'capistrano', '~> 3.10'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.5' 
+  gem 'capistrano-rails', '~> 1.4'
   
 end
 
-#group :production do
-# gem 'mysql2' #, '~> 0.3.18' 
-# gem 'unicorn'
+group :production do
 
-#end
+  gem 'mysql2'  # ​, '~> 0.3.18' 
+
+end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -67,6 +72,8 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
+
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,4 +1,5 @@
 class UsersOffice::TariffsController < UsersOfficeController
+  before_action :authenticate_user!
   before_action :set_users_office_tariff, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/tariffs

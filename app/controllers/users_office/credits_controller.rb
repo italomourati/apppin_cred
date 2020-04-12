@@ -1,4 +1,5 @@
 class UsersOffice::CreditsController < UsersOfficeController
+  before_action :authenticate_user!
   before_action :set_users_office_credit, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/credits

@@ -1,4 +1,5 @@
 class UsersOffice::DemosController < UsersOfficeController
+  before_action :authenticate_user!
   before_action :set_users_office_demo, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/demos

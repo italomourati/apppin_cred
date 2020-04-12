@@ -1,4 +1,5 @@
 class UsersOffice::RepossibilitiesController < UsersOfficeController
+  before_action :authenticate_user!
   before_action :set_users_office_repossibility, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/repossibilities

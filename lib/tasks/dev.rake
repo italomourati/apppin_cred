@@ -1,6 +1,7 @@
 namespace :dev do
 
   DEFAULT_PASSWORD = '@pincred2020'
+  DEFAULT_FILES_PATH = File.join(Rails.root, 'lib','tmp')
 
   desc "Configurando.............. Ambiente ........."
   task setup: :environment do

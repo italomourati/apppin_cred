@@ -1,0 +1,37 @@
+<div class="container-fluid">
+        <div class="line"></div>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                      <% @users_office_footers.each do |footer|%>
+                        <p><%= footer.title %></p>
+                        <p><%= footer.subtitle %></p>
+                        <p><%= footer.phone_one%></p>
+                        <p><%= footer.phone_two%></p>
+                        <p><%= footer.email%></p>
+                      <% end %>  
+                    </div>
+
+                    <div class="col-md-3">
+                        <%= image_tag('logo_pincred_white.png',class: 'img-fluid', alt: 'Logo')%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <ul>
+                            <li><a href="#">Termo de Uso</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Ouvidoria</a></li>
+                            <li><a href="#">Segurança</a></li>
+                            <li><a href="#">Canal de Denúncia</a></li>
+                            <li><a href="#">Atendimento</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

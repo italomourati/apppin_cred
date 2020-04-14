@@ -72,8 +72,8 @@
                 <% @users_office_products.each do |product|%>
                     <h3><%= product.title %></h3>
                     <p><%= product.subtitle %></p>
-                <% end %>    
-                    <a href="#" class="button_saiba_mais">+ SAIBA MAIS</a>
+                <% end %>
+                 <%= link_to '+ SAIBA MAIS', page_welcome_index_path, class: 'button_saiba_mais' %>  
                 </div>
             </div>
         </div>
@@ -91,13 +91,13 @@
                     <span class="text_info">
                             <h2>Informações</h2>
                             <h4>Demonstrações <br />Financeiras</h4>
-                            <a href="#">2019/2020</a><a href="#">2020/2021</a>
+                            <%= link_to '2019/2020', page_info_index_path %>  <%= link_to '2020/2021', page_info_index_path %>
                             <h4>Política de <br />Responsabilidade <br />Socioambiental</h4>
-                            <a href="#">Baixe aqui</a>
+                            <%= link_to 'Clique Aqui', page_info_index_path %>
                             <h4>Tabela de Tarifas</h4>
-                            <a href="#">2019<a href="#">2020</a>
+                            <%= link_to '2019', page_info_index_path %>  <%= link_to '2020', page_info_index_path %>
                             <h4>Gestão de Riscos</h4>
-                            <a href="#">Política de Gestão</a>
+                            <%= link_to 'Política de Gestão', page_info_index_path %>
                             </span>
                 </div>
             </div>

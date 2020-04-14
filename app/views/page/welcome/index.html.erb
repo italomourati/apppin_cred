@@ -1,0 +1,17 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container img_nossos_produtos" id="nossos_produtos">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nossos_produtos">
+                 <h2>Nossos Produtos</h2>
+                <% @users_office_products.each do |product|%>
+                    <h3><%= product.title %></h3>
+                    <p><%= product.subtitle %></p>
+                <% end %>    
+                </div>
+            </div>
+        </div>
+    </div>

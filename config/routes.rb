@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :page do
+    get 'welcome/index'
+    get 'info/index'
+  end
   namespace :users_office do
     resources :tariffs
   end

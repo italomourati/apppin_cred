@@ -6,136 +6,151 @@
             <div class="col-md-12">
                 <div class="nossos_produtos">
                  <h2>Informações</h2>
-               
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Correspodentes
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_correspondets.each do |correspondet|%>
-                    <h3><%= correspondet.title %></h3>
-                    <p><%= correspondet.content %></p>
-                <% end %>    
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Demonstrações Financeira
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_demos.each do |demo|%>
+           <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Correspodentes</h5>
+                    <p class="card-text">
+                      <% @users_office_correspondets.each do |correspondet|%>
+                      <h3><%= correspondet.title %></h3>
+                       <p><%#= correspondet.content %></p>
+                      <% end %>    
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Demonstrações Financeira</h5>
+                    <p class="card-text">
+                     <% @users_office_demos.each do |demo|%>
                     <h3><%= demo.title %></h3>
-                    <p><%= demo.content %></p>
-                <% end %>    
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Educação Financeira
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_educations.each do |education|%>
+                    <p><%#= demo.content %></p>
+                     <% end %>    
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Educação Financeira</h5>
+                    <p class="card-text">
+                     <% @users_office_educations.each do |education|%>
                     <h3><%= education.title %></h3>
-                    <p><%= education.content %></p>
-                <% end %>   
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Politica de Responsabilidade Socio-Ambiental - PRS
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_repossibilities.each do |respo|%>
+                    <p><%#= education.content %></p>
+                    <% end %>   
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+              
+              <br/>
+              <br/>
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Politica de Responsabilidade Socio-Ambiental - PRS</h5>
+                    <p class="card-text">
+                    <% @users_office_repossibilities.each do |respo|%>
                     <h3><%= respo.title %></h3>
-                    <p><%= respo.content %></p>
-                <% end %>    
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Tabela de Riscos
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_risks.each do |risk|%>
+                    <p><%#= respo.content %></p>
+                      <% end %>    
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Tabela de Riscos</h5>
+                    <p class="card-text">
+                    <% @users_office_risks.each do |risk|%>
                     <h3><%= risk.title %></h3>
-                    <p><%= risk.content %></p>
-                <% end %>    
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Tabela de Tarifas
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_tariffs.each do |tarif|%>
+                    <p><%#= risk.content %></p>
+                    <% end %>    
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Tabela de Tarifas</h5>
+                    <p class="card-text">
+                    <% @users_office_tariffs.each do |tarif|%>
                     <h3><%= tarif.title %></h3>
-                    <p><%= tarif.content %></p>
-                <% end %>   
-      </div>
-    </div>
-  </div>
-</div>
+                    <p><%#= tarif.content %></p>
+                    <% end %>   
+                    </p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
 
-<div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-         Sistema de Informações de Credito - SCR
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <% @users_office_credits.each do |credit|%>
+          <br/>
+              <br/>
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Sistema de Informações de Credito - SCR</h5>
+                    <p class="card-text">
+                     <% @users_office_credits.each do |credit|%>
                     <h3><%= credit.title %></h3>
-                    <p><%= credit.content %></p>
-                <% end %>   
-      </div>
-    </div>
-  </div>
-</div>
+                    <p><%#= credit.content %></p>
+                    <% end %>   
+                    </p>
+                   <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                  <%= image_tag 'contato', class: 'card-img-top', alt:'...'%>
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>  
 
                 </div>
             </div>

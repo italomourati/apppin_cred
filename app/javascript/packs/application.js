@@ -16,7 +16,8 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "@fortawesome/fontawesome-free/js/all";
-import 'bootstrap';
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery'
 
 $(document).ready(function() {
   var scrollTop = 0;
@@ -56,6 +57,14 @@ $('a[href^="#"]').on('click', function(e) {
 require("trix")
 require("@rails/actiontext")
 
-jQuery('.accordion-toggle').click(function(){
-      
-})
+environment.loaders.append('jquery', {
+    test: require.resolve('jquery'),
+    use: [{
+      loader: 'expose-loader',
+      options: '$',
+    }, {
+      loader: 'expose-loader',
+      options: 'jQuery',
+    }],
+  });
+  module.exports = environment;

@@ -39,6 +39,8 @@ gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'image_processing', '~> 1.0'
 gem 'bootstrap', '~> 4.4.1'
+gem 'ckeditor'
+gem "mini_magick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

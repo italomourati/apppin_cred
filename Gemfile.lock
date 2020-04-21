@@ -97,6 +97,8 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    ckeditor (5.1.0)
+      orm_adapter (~> 0.5.0)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     devise (4.7.1)
@@ -290,6 +292,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-unicorn
   capybara (>= 2.15)
+  ckeditor
   devise
   font-awesome-sass
   image_processing (~> 1.0)
@@ -297,6 +300,7 @@ DEPENDENCIES
   kaminari
   kaminari-i18n
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   mysql2
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)

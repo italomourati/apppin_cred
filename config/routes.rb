@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   namespace :page do
     get 'welcome/index'
     get 'info/index'

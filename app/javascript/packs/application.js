@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("trix")
+require("@rails/actiontext")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -15,56 +17,13 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
-import 'bootstrap/dist/js/bootstrap';
-import 'jquery/dist/jquery'
+import '../src/custom';
+import '../src/style';
+//import "../stylesheets/application";  // <- Add this line
 
-$(document).ready(function() {
-  var scrollTop = 0;
-  $(window).scroll(function() {
-      scrollTop = $(window).scrollTop();
-      $('.counter').html(scrollTop);
-
-      if (scrollTop >= 25) {
-          $('#menu_principal').addClass('fixed-top');
-      } else if (scrollTop < 25) {
-          $('#menu_principal').removeClass('fixed-top');
-      }
-  });
-});
-
-//smoothscroll
-$('a[href^="#"]').on('click', function(e) {
-  e.preventDefault();
-  $(document).off("scroll");
-
-  $('a').each(function() {
-      $(this).removeClass('active');
+document.addEventListener("turbolinks:load", () => {
+    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="popover"]').popover()
   })
-  $(this).addClass('active');
-
-  var target = this.hash,
-      teste = target;
-  $target = $(target);
-  $('html, body').stop().animate({
-      'scrollTop': $target.offset().top + 1
-  }, 500, 'swing', function() {
-      window.location.hash = target;
-      $(document).on("scroll");
-  });
-});
-
-require("trix")
-require("@rails/actiontext")
-
-environment.loaders.append('jquery', {
-    test: require.resolve('jquery'),
-    use: [{
-      loader: 'expose-loader',
-      options: '$',
-    }, {
-      loader: 'expose-loader',
-      options: 'jQuery',
-    }],
-  });
-  module.exports = environment;

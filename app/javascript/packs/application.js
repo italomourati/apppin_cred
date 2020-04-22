@@ -21,7 +21,7 @@ import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
 import '../src/custom';
 import '../src/style';
-import 'sweetalert';
+//import 'sweetalert';
 //import "../stylesheets/application";  // <- Add this line
 //import 'font_awesome5';
 

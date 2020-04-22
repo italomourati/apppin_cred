@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  namespace :page do
+    get 'tariff/index'
+  end
+  namespace :page do
+    get 'risk/index'
+  end
+  namespace :page do
+    get 'socio/index'
+  end
+  namespace :page do
+    get 'education/index'
+  end
+  namespace :page do
+    get 'demo/index'
+  end
+  namespace :page do
+    get 'credit/index'
+  end
+  namespace :page do
+    get 'correspodent/index'
+  end
+  namespace :page do
+    get 'who/index'
+  end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :page do
     get 'welcome/index'
@@ -41,7 +65,9 @@ Rails.application.routes.draw do
     get 'users/index'
     resources :users
   end
+  
   devise_for :users
+
   namespace :users_office do
     get 'welcome/index'
   end
@@ -51,5 +77,18 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   root to: 'site/welcome#index'
+  
+  get '/inicio', to: 'site/welcome#index'
+  get '/informacoes', to: 'page/info#index'
+  get '/produtos', to: 'page/welcome#index'
+  get '/quem-somos', to: 'page/who#index'
+  get '/correspodentes', to: 'page/correspodent#index'
+  get '/demonstracoes-financeiras', to: 'page/demo#index'
+  get '/educacao-financeira', to: 'page/education#index'
+  get '/politica-responsabilidade-socio-ambiental-prs', to: 'page/socio#index'
+  get '/tabela-de-risco', to: 'page/risk#index'
+  get '/tabela-de-tarifas', to: 'page/tariff#index'
+  get '/sistema-de-informacao-de-credito-scr', to: 'page/credit#index'
+  
 
  end

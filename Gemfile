@@ -41,6 +41,9 @@ gem 'image_processing', '~> 1.0'
 gem 'bootstrap', '~> 4.4.1'
 gem 'ckeditor'
 gem "mini_magick"
+#gem 'font_awesome5_rails'
+gem 'font-awesome-rails'
+gem 'sweetalert-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

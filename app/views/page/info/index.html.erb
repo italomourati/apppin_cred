@@ -1,6 +1,8 @@
 <br/>
 <br/>
 <br/>
+
+
 <div class="container img_nossos_produtos" id="informacoes">
         <div class="row">
             <div class="col-md-12">
@@ -9,47 +11,35 @@
            <div class="container">
               <div class="row">
                 <div class="col-sm">
-                  <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
+                  <div class="card bg-light mb-3" style="width: 18rem;">
                   <div class="card-body">
                     <h5 class="card-title">Correspodentes</h5>
                     <p class="card-text">
-                      <% @users_office_correspondets.each do |correspondet|%>
-                      <h3><%= correspondet.title %></h3>
-                       <p><%#= correspondet.content %></p>
-                      <% end %>    
+                      
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                    <%= link_to '+Saiba Mais', page_correspodent_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Demonstrações Financeira</h5>
+                    <h5 class="card-title">Demonstraçoes </h5>
                     <p class="card-text">
-                     <% @users_office_demos.each do |demo|%>
-                    <h3><%= demo.title %></h3>
-                    <p><%#= demo.content %></p>
-                     <% end %>    
+                     
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                     <%= link_to '+Saiba Mais', page_demo_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                 <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Educação Financeira</h5>
+                    <h5 class="card-title">Educação Financeira </h5>
                     <p class="card-text">
-                     <% @users_office_educations.each do |education|%>
-                    <h3><%= education.title %></h3>
-                    <p><%#= education.content %></p>
-                    <% end %>   
+                    
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                    <%= link_to '+Saiba Mais', page_education_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
@@ -63,46 +53,34 @@
               <div class="row">
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Politica de Responsabilidade Socio-Ambiental - PRS</h5>
+                    <h5 class="card-title">Politica - PRS</h5>
                     <p class="card-text">
-                    <% @users_office_repossibilities.each do |respo|%>
-                    <h3><%= respo.title %></h3>
-                    <p><%#= respo.content %></p>
-                      <% end %>    
+                    
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                    <%= link_to '+Saiba Mais', page_socio_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
                     <h5 class="card-title">Tabela de Riscos</h5>
                     <p class="card-text">
-                    <% @users_office_risks.each do |risk|%>
-                    <h3><%= risk.title %></h3>
-                    <p><%#= risk.content %></p>
-                    <% end %>    
+                    
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                   <%= link_to '+Saiba Mais', page_risk_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
                     <h5 class="card-title">Tabela de Tarifas</h5>
                     <p class="card-text">
-                    <% @users_office_tariffs.each do |tarif|%>
-                    <h3><%= tarif.title %></h3>
-                    <p><%#= tarif.content %></p>
-                    <% end %>   
+                    
                     </p>
-                    <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                    <%= link_to '+Saiba Mais', page_tariff_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
@@ -116,35 +94,29 @@
               <div class="row">
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Sistema de Informações de Credito - SCR</h5>
+                    <h5 class="card-title">Sistema - SCR</h5>
                     <p class="card-text">
-                     <% @users_office_credits.each do |credit|%>
-                    <h3><%= credit.title %></h3>
-                    <p><%#= credit.content %></p>
-                    <% end %>   
+                    
                     </p>
-                   <a href="#" class="btn btn-primary">+Saiba Mais</a>
+                   <%= link_to '+Saiba Mais', page_credit_index_path, class: 'btn btn-primary'%>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Canal de Contato </h5>
+                    <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">+Saiba Mais</a>
                   </div>
                 </div>
                 </div>
                 <div class="col-sm">
                   <div class="card" style="width: 18rem;">
-                  <%= image_tag 'contato.jpg', class: 'card-img-top', alt:'...'%>
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Canal de Denuncias</h5>
+                    <p class="card-text"></p>
                     <a href="#" class="btn btn-primary">+Saiba Mais</a>
                   </div>
                 </div>

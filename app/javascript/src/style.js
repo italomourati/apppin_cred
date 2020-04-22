@@ -13,7 +13,7 @@ $(document).ready(function() {
 });
 
 //smoothscroll
-$('a[href^="#"]').on('click', function(e) {
+$('a[nav-link]').on('click', function(e) {
   e.preventDefault();
   $(document).off("scroll");
 
@@ -32,5 +32,3 @@ $('a[href^="#"]').on('click', function(e) {
       $(document).on("scroll");
   });
 });
-
-

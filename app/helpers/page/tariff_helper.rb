@@ -1,0 +1,2 @@
+module Page::TariffHelper
+end

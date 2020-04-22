@@ -21,7 +21,9 @@ import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
 import '../src/custom';
 import '../src/style';
+import 'sweetalert';
 //import "../stylesheets/application";  // <- Add this line
+//import 'font_awesome5';
 
 document.addEventListener("turbolinks:load", () => {
     $('[data-toggle="tooltip"]').tooltip()

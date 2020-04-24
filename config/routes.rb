@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  namespace :users_office do
+    resources :contacts
+  end
   namespace :page do
     get 'tariff/index'
+  end
+  namespace :page do
+    get 'contact/index'
+    get 'contact/new'
   end
   namespace :page do
     get 'risk/index'

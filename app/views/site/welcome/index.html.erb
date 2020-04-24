@@ -26,13 +26,13 @@
                     <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Produtos', page_welcome_index_path, class:'nav-link', href:'#nossos_produtos'%>
+                    <%= link_to 'Produtos', "/produtos", class:'nav-link', href:'#nossos_produtos'%>
                 </li>
                 <li class="nav-item">
-                     <%= link_to 'Informações', page_info_index_path, class:'nav-link', href:'#informacoes'%>
+                     <%= link_to 'Informações', "/informacoes", class:'nav-link', href:'#informacoes'%>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Quem Somos', page_who_index_path, class:'nav-link', href:'#quem_somos'%>
+                    <%= link_to 'Quem Somos', "/quem-somos", class:'nav-link', href:'#quem_somos'%>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contato">Contato</a>
@@ -55,7 +55,7 @@
                               <li><%= image.content_two %></li>
                               <li><%= image.content %></li>
                             </ul>
-                             <%= link_to '+ SAIBA MAIS', page_welcome_index_path, class: 'button_saiba_mais' %>
+                             <%= link_to '+ SAIBA MAIS', "/informacoes", class: 'button_saiba_mais' %>
                         </span>
                   <% end %>
                 </div>
@@ -73,7 +73,7 @@
                     <h3><%= product.title %></h3>
                     <p><%= product.subtitle %></p>
                 <% end %>
-                 <%= link_to '+ SAIBA MAIS', page_welcome_index_path, class: 'button_saiba_mais' %>  
+                 <%= link_to '+ SAIBA MAIS', "/informacoes", class: 'button_saiba_mais' %>  
                 </div>
             </div>
         </div>
@@ -91,11 +91,11 @@
                     <span class="text_info">
                             <h2>Informações</h2>
                             <h4>Demonstrações <br />Financeiras</h4>
-                            <%= link_to '2019/2020', page_demo_index_path %>  <%= link_to '2020/2021', page_demo_index_path %>
+                            <%= link_to '2019/2020', "/demonstracoes-financeiras" %>  <%= link_to '2020/2021', "/demonstracoes-financeiras" %>
                             <h4>Política de <br />Responsabilidade <br />Socioambiental</h4>
-                            <%= link_to 'Clique Aqui', page_socio_index_path %>
+                            <%= link_to 'Clique Aqui', "/politica-responsabilidade-socio-ambiental-prs" %>
                             <h4>Tabela de Tarifas</h4>
-                            <%= link_to '2019', page_risk_index_path %>  <%= link_to '2020', page_risk_index_path %>
+                            <%= link_to '2019', "/tabela-de-risco" %>  <%= link_to '2020', "/tabela-de-risco" %>
                             <h4>Gestão de Riscos</h4>
                             <%= link_to 'Política de Gestão', page_info_index_path %>
                             </span>

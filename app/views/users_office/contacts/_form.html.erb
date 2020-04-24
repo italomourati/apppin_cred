@@ -1,0 +1,114 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!doctype html>
+<!-- https://bootsnipp.com/snippets/GaZG0 -->
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  
+
+
+    <link rel="icon" href="Favicon.png">
+
+
+    <title>Painel Administrativo</title>
+</head>
+
+<body> 
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><strong> <h3> <%#= message %></h3> </strong> </div>
+                    <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-md-12"> 
+                                <%= form_with(model: users_office_contact, local: true) do |form| %>
+                                    <% if users_office_contact.errors.any? %>
+                                      <div id="error_explanation">
+                                        <h2><%= pluralize(users_office_contact.errors.count, "error") %> prohibited this users_office_contact from being saved:</h2>
+
+                                        <ul>
+                                          <% users_office_contact.errors.full_messages.each do |message| %>
+                                            <li><%= message %></li>
+                                          <% end %>
+                                        </ul>
+                                      </div>
+                                    <% end %>
+
+                                        <div class="form-group">
+                                         <%= form.label :description  %>
+                                         <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: " %>
+                                         </div>
+                                    
+                                        <div class="form-group">
+                                          <%= form.label :email %>
+                                          <%= form.text_field :email, class:"form-control",placeholder:"Email", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :cpf %>
+                                          <%= form.text_field :cpf, class:"form-control",placeholder:"CPF", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :dtnascimento  %>
+                                          <%= form.text_field :dtnascimento , class:"form-control",placeholder:"Data de Nascimento", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :phone %>
+                                          <%= form.text_field :phone, class:"form-control",placeholder:"Telefone", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :city %>
+                                          <%= form.text_field :city, class:"form-control",placeholder:"Cidade", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :state %>
+                                          <%= form.text_field :state, class:"form-control",placeholder:"Estado", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :typecontact  %>
+                                          <%= form.text_field :typecontact , class:"form-control",placeholder:"Tipo de Contato", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :content %>
+                                          <%= form.text_field :content , class:"form-control",placeholder:"Conteúdo", id: form.object.object_id%>
+                                        </div>
+                                     
+                                         <%= form.submit "Salvar" , class: 'btn btn-primary'%>
+                                         <% end %>
+                                    
+                                </div>
+                            </div>
+      
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+</body>
+</html>

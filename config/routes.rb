@@ -103,4 +103,5 @@ Rails.application.routes.draw do
   get '/sistema-de-informacao-de-credito-scr', to: 'page/credit#index'
   get '/contato', to: 'page/contact#new'
   get '/denuncia', to: 'page/complaint#new'
+  
  end

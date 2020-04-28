@@ -51,7 +51,6 @@
                                           <th>Data de Nascimento</th>
                                            <th>Telefone</th>
                                           <th>Estado</th>
-                                          <th>Telefone</th>
                                           <th>Cidade</th>
                                           <th>Tipo de Contato</th>
                                           <th>Conteudo</th>
@@ -67,11 +66,12 @@
                                          <tbody>
                                           <% @users_office_contacts.each do |users_office_contact| %>
                                           <tr>
-                                          <td><%= users_office_correspondet.id%></td>
+                                          <td><%= users_office_contact.id%></td>
                                            <td><%= users_office_contact.description %></td>
                                             <td><%= users_office_contact.email %></td>
                                              <td><%= users_office_contact.cpf %></td>
                                            <td><%= users_office_contact.dtnascimento %></td>
+                                            <td><%= users_office_contact.phone %></td>
                                             <td><%= users_office_contact.state %></td>
                                              <td><%= users_office_contact.city %></td>
                                            <td><%= users_office_contact.typecontact %></td>

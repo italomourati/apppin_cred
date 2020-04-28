@@ -6,6 +6,7 @@ class UsersOffice::ContactsController < UsersOfficeController
   # GET /users_office/contacts.json
   def index
     @users_office_contacts = UsersOffice::Contact.all
+    @users_office_footers = UsersOffice::Footer.all
   end
 
   # GET /users_office/contacts/1

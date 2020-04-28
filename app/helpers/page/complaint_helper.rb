@@ -1,0 +1,2 @@
+module Page::ComplaintHelper
+end

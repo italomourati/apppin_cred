@@ -1,0 +1,102 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  
+    
+    <link rel="icon" href="Favicon.png">
+
+</head>
+
+<body> 
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><strong> <h3> <%= message %></h3> </strong> </div>
+                    <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-md-12"> 
+                                <%= form_with(model: users_office_complaint, local: true) do |form| %>
+                                    <% if users_office_complaint.errors.any? %>
+                                      <div id="error_explanation">
+                                        <h2><%= pluralize(users_office_complaint.errors.count, "error") %> prohibited this users_office_complaint from being saved:</h2>
+
+                                        <ul>
+                                          <% users_office_complaint.errors.full_messages.each do |message| %>
+                                            <li><%= message %></li>
+                                          <% end %>
+                                        </ul>
+                                      </div>
+                                    <% end %>
+
+                                        <div class="form-group">
+                                         <%= form.label :Nome  %>
+                                         <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: " %>
+                                         </div>
+                                    
+                                        <div class="form-group">
+                                          <%= form.label :Email %>
+                                          <%= form.text_field :email, class:"form-control",placeholder:"Email", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :CPF%>
+                                          <%= form.text_field :cpf, class:"form-control",placeholder:"CPF", 'data-mask': '000.000.000-00', required: true %>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Data_de_Nascimento  %>
+                                          <%= form.text_field :dtnascimento , class:"form-control",placeholder:"Data de Nascimento", 'data-mask': '00/00/0000', required: true %>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Telefone %>
+                                          <%= form.text_field :phone, class:"form-control",placeholder:"Telefone", 'data-mask': '(00)0.0000-0000', required: true%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Cidade %>
+                                          <%= form.text_field :city, class:"form-control",placeholder:"Cidade", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Estado %>
+                                          <%= form.text_field :state, class:"form-control",placeholder:"Estado", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Tipo_Contato  %>
+                                          <%= form.text_field :typecontact , class:"form-control",placeholder:"Tipo de Contato", id: form.object.object_id%>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <%= form.label :Mensagem %>
+                                          <%= form.text_area :content , class:"form-control",placeholder:"Conteúdo", id: form.object.object_id%>
+                                        </div>
+                                     
+                                         <%= form.submit "Salvar" , class: 'btn btn-primary'%>
+                                         <% end %>
+                                    
+                                </div>
+                            </div>
+      
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+</body>
+</html>

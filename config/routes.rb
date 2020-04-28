@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :complaints
+  end
+  namespace :users_office do
     resources :contacts
   end
   namespace :page do
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
   namespace :page do
     get 'contact/index'
     post 'contact/new'
+    get 'complaint/index'
+    post 'complaint/new'
   end
   namespace :page do
     get 'risk/index'
@@ -97,5 +102,6 @@ Rails.application.routes.draw do
   get '/tabela-de-tarifas', to: 'page/tariff#index'
   get '/sistema-de-informacao-de-credito-scr', to: 'page/credit#index'
   get '/contato', to: 'page/contact#new'
+  get '/denuncia', to: 'page/complaint#new'
 
  end

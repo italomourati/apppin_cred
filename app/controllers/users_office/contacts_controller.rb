@@ -1,4 +1,5 @@
 class UsersOffice::ContactsController < UsersOfficeController
+  before_action :authenticate_user! , only: [:show,:edit,:update,:destroy,:index]
   before_action :set_users_office_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /users_office/contacts
@@ -28,7 +29,7 @@ class UsersOffice::ContactsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_contact.save
-        format.html { redirect_to @users_office_contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to page_contact_index_path, notice: 'Contato, enviado com sucesso !' }
         format.json { render :show, status: :created, location: @users_office_contact }
       else
         format.html { render :new }

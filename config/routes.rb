@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   namespace :page do
     get 'contact/index'
-    get 'contact/new'
+    post 'contact/new'
   end
   namespace :page do
     get 'risk/index'
@@ -96,6 +96,6 @@ Rails.application.routes.draw do
   get '/tabela-de-risco', to: 'page/risk#index'
   get '/tabela-de-tarifas', to: 'page/tariff#index'
   get '/sistema-de-informacao-de-credito-scr', to: 'page/credit#index'
-  
+  get '/contato', to: 'page/contact#new'
 
  end

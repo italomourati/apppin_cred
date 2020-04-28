@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("trix")
 require("@rails/actiontext")
+require("jquery-mask-plugin")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -18,9 +19,11 @@ require("@rails/actiontext")
 // const imagePath = (name) => images(name, true)
 
 import "bootstrap";
+import 'jquery-mask-plugin';
 import "@fortawesome/fontawesome-free/js/all";
 import '../src/custom';
 import '../src/style';
+import '../src/mask';
 //import 'sweetalert';
 //import "../stylesheets/application";  // <- Add this line
 //import 'font_awesome5';

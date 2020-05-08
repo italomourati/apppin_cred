@@ -29,7 +29,7 @@ class UsersOffice::CreditsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_credit.save
-        format.html { redirect_to @users_office_credit, notice: 'Credit was successfully created.' }
+        format.html { redirect_to @users_office_credit, notice: 'Crédito salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_credit }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::CreditsController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_credit.update(users_office_credit_params)
-        format.html { redirect_to @users_office_credit, notice: 'Credit was successfully updated.' }
+        format.html { redirect_to @users_office_credit, notice: 'Crédito atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_credit }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::CreditsController < UsersOfficeController
   def destroy
     @users_office_credit.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_credits_url, notice: 'Credit was successfully destroyed.' }
+      format.html { redirect_to users_office_credits_url, notice: 'Crédito excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

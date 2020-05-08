@@ -29,7 +29,7 @@ class UsersOffice::TariffsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_tariff.save
-        format.html { redirect_to @users_office_tariff, notice: 'Tariff was successfully created.' }
+        format.html { redirect_to @users_office_tariff, notice: 'Tarifa salva com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_tariff }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::TariffsController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_tariff.update(users_office_tariff_params)
-        format.html { redirect_to @users_office_tariff, notice: 'Tariff was successfully updated.' }
+        format.html { redirect_to @users_office_tariff, notice: 'Tarifa atualizada com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_tariff }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::TariffsController < UsersOfficeController
   def destroy
     @users_office_tariff.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_tariffs_url, notice: 'Tariff was successfully destroyed.' }
+      format.html { redirect_to users_office_tariffs_url, notice: 'Tarifa excluida com sucesso.!' }
       format.json { head :no_content }
     end
   end

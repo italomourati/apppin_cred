@@ -29,7 +29,7 @@ class UsersOffice::ProductsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_product.save
-        format.html { redirect_to @users_office_product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @users_office_product, notice: 'Produto salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_product }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::ProductsController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_product.update(users_office_product_params)
-        format.html { redirect_to @users_office_product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @users_office_product, notice: 'Produto atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_product }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::ProductsController < UsersOfficeController
   def destroy
     @users_office_product.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to users_office_products_url, notice: 'Produto excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

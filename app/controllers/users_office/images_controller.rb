@@ -29,7 +29,7 @@ class UsersOffice::ImagesController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_image.save
-        format.html { redirect_to @users_office_image, notice: 'Image was successfully created.' }
+        format.html { redirect_to @users_office_image, notice: 'Imagem salva com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_image }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::ImagesController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_image.update(users_office_image_params)
-        format.html { redirect_to @users_office_image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to @users_office_image, notice: 'Imagem atualizada com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_image }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::ImagesController < UsersOfficeController
   def destroy
     @users_office_image.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_images_url, notice: 'Image was successfully destroyed.' }
+      format.html { redirect_to users_office_images_url, notice: 'Imagem excluida com sucesso.!' }
       format.json { head :no_content }
     end
   end

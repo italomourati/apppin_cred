@@ -29,7 +29,7 @@ class UsersOffice::RepossibilitiesController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_repossibility.save
-        format.html { redirect_to @users_office_repossibility, notice: 'Repossibility was successfully created.' }
+        format.html { redirect_to @users_office_repossibility, notice: 'Responsabilidade - PRSA salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_repossibility }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::RepossibilitiesController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_repossibility.update(users_office_repossibility_params)
-        format.html { redirect_to @users_office_repossibility, notice: 'Repossibility was successfully updated.' }
+        format.html { redirect_to @users_office_repossibility, notice: 'Responsabilidade - PRSA atualizada com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_repossibility }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::RepossibilitiesController < UsersOfficeController
   def destroy
     @users_office_repossibility.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_repossibilities_url, notice: 'Repossibility was successfully destroyed.' }
+      format.html { redirect_to users_office_repossibilities_url, notice: 'Responsabilidade - PRSA excluida com sucesso.!' }
       format.json { head :no_content }
     end
   end

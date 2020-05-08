@@ -29,7 +29,7 @@ class UsersOffice::CorrespondetsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_correspondet.save
-        format.html { redirect_to @users_office_correspondet, notice: 'Correspondet was successfully created.' }
+        format.html { redirect_to @users_office_correspondet, notice: 'Correspodente salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_correspondet }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::CorrespondetsController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_correspondet.update(users_office_correspondet_params)
-        format.html { redirect_to @users_office_correspondet, notice: 'Correspondet was successfully updated.' }
+        format.html { redirect_to @users_office_correspondet, notice: 'Correspodente atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_correspondet }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::CorrespondetsController < UsersOfficeController
   def destroy
     @users_office_correspondet.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_correspondets_url, notice: 'Correspondet was successfully destroyed.' }
+      format.html { redirect_to users_office_correspondets_url, notice: 'Correspodente excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

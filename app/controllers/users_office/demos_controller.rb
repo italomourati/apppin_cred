@@ -29,7 +29,7 @@ class UsersOffice::DemosController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_demo.save
-        format.html { redirect_to @users_office_demo, notice: 'Demo was successfully created.' }
+        format.html { redirect_to @users_office_demo, notice: 'Demonstração Financeira salva com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_demo }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::DemosController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_demo.update(users_office_demo_params)
-        format.html { redirect_to @users_office_demo, notice: 'Demo was successfully updated.' }
+        format.html { redirect_to @users_office_demo, notice: 'Demonstração Financeira atualizada com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_demo }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::DemosController < UsersOfficeController
   def destroy
     @users_office_demo.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_demos_url, notice: 'Demo was successfully destroyed.' }
+      format.html { redirect_to users_office_demos_url, notice: 'Demonstração Financeira excluida com sucesso.!' }
       format.json { head :no_content }
     end
   end

@@ -29,7 +29,7 @@ class UsersOffice::RisksController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_risk.save
-        format.html { redirect_to @users_office_risk, notice: 'Risk was successfully created.' }
+        format.html { redirect_to @users_office_risk, notice: 'Risco salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_risk }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::RisksController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_risk.update(users_office_risk_params)
-        format.html { redirect_to @users_office_risk, notice: 'Risk was successfully updated.' }
+        format.html { redirect_to @users_office_risk, notice: 'Risco atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_risk }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::RisksController < UsersOfficeController
   def destroy
     @users_office_risk.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_risks_url, notice: 'Risk was successfully destroyed.' }
+      format.html { redirect_to users_office_risks_url, notice: 'Risco excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

@@ -29,7 +29,7 @@ class UsersOffice::FootersController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_footer.save
-        format.html { redirect_to @users_office_footer, notice: 'Footer was successfully created.' }
+        format.html { redirect_to @users_office_footer, notice: 'Rodapé salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_footer }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::FootersController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_footer.update(users_office_footer_params)
-        format.html { redirect_to @users_office_footer, notice: 'Footer was successfully updated.' }
+        format.html { redirect_to @users_office_footer, notice: 'Rodapé atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_footer }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::FootersController < UsersOfficeController
   def destroy
     @users_office_footer.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_footers_url, notice: 'Footer was successfully destroyed.' }
+      format.html { redirect_to users_office_footers_url, notice: 'Rodapé excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

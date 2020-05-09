@@ -116,4 +116,29 @@ Rails.application.routes.draw do
   get '/termos-de-uso', to: 'page/terms#index'
   get '/politica-de-privacidade', to: 'page/privacy#index'
   get '/seguranca', to: 'page/safety#index'
+
+
+  #rotas admins
+
+  get '/admin/home', to: 'users_office/welcome#index'
+  get '/admin/imagens', to: 'users_office/images#index'
+  get '/admin/correspodentes', to: 'users_office/correspondets#index'
+  get '/admin/demonstracao-financeira', to: 'users_office/demos#index'
+  get '/admin/educacao-financeira', to: 'users_office/educations#index'
+
+  get '/admin/politica-de-privacidade', to: 'users_office/privacies#index'
+  get '/admin/politica-responsabilidade-socioambiental', to: 'users_office/repossibilities#index'
+  get '/admin/tabela-de-risco', to: 'users_office/risks#index'
+  get '/admin/seguranca', to: 'users_office/safeties#index'
+  get '/admin/sistema-de-informacoes-de-credito', to: 'users_office/credits#index'
+
+  get '/admin/tabela-de-tarifas', to: 'users_office/tariffs#index'
+  get '/admin/termos-de-uso', to: 'users_office/terms#index'
+  get '/admin/contatos', to: 'users_office/contacts#index'
+  get '/admin/denuncias', to: 'users_office/complaints#index'
+
+  get '/admin/produtos', to: 'users_office/products#index'
+  get '/admin/quem-somos', to: 'users_office/whos#index'
+  get '/admin/rodape', to: 'users_office/footers#index'
+  get '/admin/usuarios', to: 'users_office/users#index'
  end

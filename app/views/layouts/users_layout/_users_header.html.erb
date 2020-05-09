@@ -11,7 +11,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-   <a class="navbar-brand" href="#">Painel Administrativo PINCRED </a>
+   <a class="navbar-brand" href="/admin/home">Painel Administrativo PINCRED </a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
      </button>
@@ -19,45 +19,45 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to 'Home', users_office_welcome_index_path, class: 'nav-link'%>
+        <%= link_to 'Home', "/admin/home", class: 'nav-link'%>
       </li>
       <li class="nav-item">
-        <%= link_to 'Imagens', users_office_images_path , class: 'nav-link'%>
+        <%= link_to 'Imagens', '/admin/imagens', class: 'nav-link'%>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Informações</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item disabled" href="#">Acesso as Informações das Páginas</a>
           <div class="dropdown-divider"></div>
-          <%= link_to 'Correspondentes', users_office_correspondets_path, class: 'dropdown-item'%>
-          <%= link_to 'Demonstrações Financeiras', users_office_demos_path, class: 'dropdown-item'%>
-          <%= link_to 'Educação Financeira', users_office_educations_path, class: 'dropdown-item'%>
-          <%= link_to 'Politica de Privacidade', users_office_privacies_path, class: 'dropdown-item'%>
-          <%= link_to 'Politica Responsabilidade Socioambiental - PRS ', users_office_repossibilities_path, class: 'dropdown-item'%>
-          <%= link_to 'Tabelas de Riscos', users_office_risks_path, class: 'dropdown-item'%>
-          <%= link_to 'Segurança', users_office_safeties_path, class: 'dropdown-item'%>
-          <%= link_to 'Sistema de Informações de Crédito - SCR ', users_office_credits_path, class: 'dropdown-item'%>
-          <%= link_to 'Tabelas de Tarifas', users_office_tariffs_path, class: 'dropdown-item'%>
-          <%= link_to 'Termos de Uso', users_office_terms_path, class: 'dropdown-item'%>
+          <%= link_to 'Correspondentes', "/admin/correspodentes", class: 'dropdown-item'%>
+          <%= link_to 'Demonstrações Financeiras', "/admin/demonstracao-financeira", class: 'dropdown-item'%>
+          <%= link_to 'Educação Financeira', "/admin/educacao-financeira", class: 'dropdown-item'%>
+          <%= link_to 'Politica de Privacidade', "/admin/politica-de-privacidade", class: 'dropdown-item'%>
+          <%= link_to 'Politica Responsabilidade Socioambiental - PRS ', "/admin/politica-responsabilidade-socioambiental", class: 'dropdown-item'%>
+          <%= link_to 'Tabelas de Riscos', "/admin/tabela-de-risco", class: 'dropdown-item'%>
+          <%= link_to 'Segurança', '/admin/seguranca', class: 'dropdown-item'%>
+          <%= link_to 'Sistema de Informações de Crédito - SCR ', '/admin/sistema-de-informacoes-de-credito', class: 'dropdown-item'%>
+          <%= link_to 'Tabelas de Tarifas', '/admin/tabela-de-tarifas', class: 'dropdown-item'%>
+          <%= link_to 'Termos de Uso', '/admin/termos-de-uso', class: 'dropdown-item'%>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Acesso as informaçoes dos Canais</a>
           <div class="dropdown-divider"></div>
-           <%= link_to 'Contatos', users_office_contacts_path, class: 'dropdown-item'%>
-            <%= link_to 'Denuncias', users_office_complaints_path, class: 'dropdown-item'%>
+           <%= link_to 'Contatos', '/admin/contatos', class: 'dropdown-item'%>
+            <%= link_to 'Denuncias', '/admin/denuncias', class: 'dropdown-item'%>
         </div>
        <li class="nav-item">
-        <%= link_to 'Produtos', users_office_products_path , class: 'nav-link'%>
+        <%= link_to 'Produtos', '/admin/produtos' , class: 'nav-link'%>
       </li>
         <li class="nav-item">
-        <%= link_to 'Quem Somos', users_office_whos_path , class: 'nav-link'%>
+        <%= link_to 'Quem Somos', '/admin/quem-somos' , class: 'nav-link'%>
       </li>
        </li>
         <li class="nav-item">
-        <%= link_to 'Rodapé', users_office_footers_path , class: 'nav-link'%>
+        <%= link_to 'Rodapé', '/admin/rodape', class: 'nav-link'%>
       </li>
       </li>
         <li class="nav-item">
-        <%= link_to 'Usuários', users_office_users_index_path , class: 'nav-link'%>
+        <%= link_to 'Usuários', '/admin/usuarios', class: 'nav-link'%>
       </li>
     </ul>
    
@@ -71,3 +71,7 @@
 
 </body>
 </html>
+
+
+
+

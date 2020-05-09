@@ -5,6 +5,7 @@ class Page::ComplaintController < PageController
   
   # GET /users_office/contacts/new
   def new
+    @users_office_footers = UsersOffice::Footer.all
     @users_office_complaint = UsersOffice::Complaint.new
   end
    

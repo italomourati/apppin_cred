@@ -1,0 +1,2 @@
+module Page::PrivacyHelper
+end

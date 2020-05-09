@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_120943) do
+ActiveRecord::Schema.define(version: 2020_05_08_234936) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -142,6 +142,13 @@ ActiveRecord::Schema.define(version: 2020_04_28_120943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users_office_privacies", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users_office_products", force: :cascade do |t|
     t.string "title"
     t.text "subtitle"
@@ -163,7 +170,21 @@ ActiveRecord::Schema.define(version: 2020_04_28_120943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users_office_safeties", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users_office_tariffs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users_office_terms", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false

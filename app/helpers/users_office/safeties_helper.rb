@@ -1,0 +1,2 @@
+module UsersOffice::SafetiesHelper
+end

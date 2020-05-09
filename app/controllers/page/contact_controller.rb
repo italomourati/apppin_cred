@@ -5,6 +5,7 @@ class Page::ContactController < PageController
   
   # GET /users_office/contacts/new
   def new
+    @users_office_footers = UsersOffice::Footer.all
     @users_office_contact = UsersOffice::Contact.new
   end
    

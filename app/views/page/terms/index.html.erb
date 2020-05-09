@@ -1,0 +1,16 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container img_nossos_produtos" id="nossos_produtos">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nossos_produtos">
+                 <% @users_office_terms.each do |users_office_term| %>
+                 <h2><%= users_office_term.title %></h2>
+                    <p><%= users_office_term.content%></p>
+                <% end %>    
+                </div>
+            </div>
+        </div>
+    </div>

@@ -4,13 +4,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                      <%# @users_office_footers.each do |footer|%>
-                        <p><%#= footer.title %></p>
-                        <p><%#= footer.subtitle %></p>
-                        <p><%#= footer.phone_one%></p>
-                        <p><%#= footer.phone_two%></p>
-                        <p><%#= footer.email%></p>
-                      <%# end %>  
+                      <% @users_office_footers.each do |users_office_footer| %>
+                        <p><%= users_office_footer.title %></p>
+                        <p><%= users_office_footer.subtitle %></p>
+                        <p><%= users_office_footer.phone_one%></p>
+                        <p><%= users_office_footer.phone_two%></p>
+                        <p><%= users_office_footer.email%></p>
+                      <% end %>  
                     </div>
 
                     <div class="col-md-3">
@@ -20,13 +20,18 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <ul>
-                            <li><a href="#">Termo de Uso</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Ouvidoria</a></li>
-                            <li><a href="#">Segurança</a></li>
-                            <li><a href="#">Canal de Denúncia</a></li>
-                            <li><a href="#">Atendimento</a></li>
+                       <ul>
+                            <li><%= link_to 'Termo de Uso', "/termos-de-uso" %></li>
+                            <li><%= link_to 'Política de Privacidade', "/politica-de-privacidade" %></li>
+                            <li><%= link_to 'Ouvidoria', "/contato" %></li>
+                            <li><%= link_to 'Segurança', "/seguranca" %></li>
+                            <li><%= link_to 'Canal de Denúncia', "/denuncia" %></li>
+                            <li><%= link_to 'Atendimento', "/contato" %></li>
+                            <li>
+                            <%= link_to 'painel-administrativo/sign-in' do %>
+                              <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+                            <% end %>  
+                            </li>
                         </ul>
 
                     </div>

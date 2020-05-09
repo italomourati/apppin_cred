@@ -1,0 +1,2 @@
+module Page::SafetyHelper
+end

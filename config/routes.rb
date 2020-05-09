@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :safeties
+  end
+  namespace :users_office do
+    resources :privacies
+  end
+  namespace :users_office do
+    resources :terms
+  end
+  namespace :users_office do
     resources :complaints
   end
   namespace :users_office do
@@ -104,4 +113,7 @@ Rails.application.routes.draw do
   get '/contato', to: 'page/contact#new'
   get '/denuncia', to: 'page/complaint#new'
   get '/painel-administrativo/sign-in', to: 'users_office/welcome#index'
+  get '/termos-de-uso', to: 'page/terms#index'
+  get '/politica-de-privacidade', to: 'page/privacy#index'
+  get '/seguranca', to: 'page/safety#index'
  end

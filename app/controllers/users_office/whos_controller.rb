@@ -29,7 +29,7 @@ class UsersOffice::WhosController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_who.save
-        format.html { redirect_to @users_office_who, notice: 'Who was successfully created.' }
+        format.html { redirect_to @users_office_who, notice: 'Quem Somos salvo com sucesso.!' }
         format.json { render :show, status: :created, location: @users_office_who }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class UsersOffice::WhosController < UsersOfficeController
   def update
     respond_to do |format|
       if @users_office_who.update(users_office_who_params)
-        format.html { redirect_to @users_office_who, notice: 'Who was successfully updated.' }
+        format.html { redirect_to @users_office_who, notice: 'Quem Somos atualizado com sucesso.!' }
         format.json { render :show, status: :ok, location: @users_office_who }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class UsersOffice::WhosController < UsersOfficeController
   def destroy
     @users_office_who.destroy
     respond_to do |format|
-      format.html { redirect_to users_office_whos_url, notice: 'Who was successfully destroyed.' }
+      format.html { redirect_to users_office_whos_url, notice: 'Quem Somos excluido com sucesso.!' }
       format.json { head :no_content }
     end
   end

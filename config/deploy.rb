@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.13.0"
+lock "~> 3.9"
 
 set :application, "apppin_cred"
 set :repo_url, "git@github.com:daniel8486/apppin_cred.git"

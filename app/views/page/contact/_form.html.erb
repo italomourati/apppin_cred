@@ -30,49 +30,61 @@
                                       </div>
                                     <% end %>
 
+                                       <div class="form-group">
+                                          <label for="inputState">Selecione um Opçao</label>
+                                          <select id="inputState" class="form-control">
+                                            <option selected>Comercial</option>
+                                            <option selected>Financeiro</option>
+                                            <option selected>Cobrança</option>
+                                            <option selected>Ouvidoria</option>
+                                            <option selected>Denúncias</option>
+                                          </select>
+                                        </div>
+
                                         <div class="form-group">
                                          <%= form.label :Nome  %>
-                                         <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: " %>
+                                         <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: ", required: true %>
                                          </div>
                                     
                                         <div class="form-group">
                                           <%= form.label :Email %>
-                                          <%= form.text_field :email, class:"form-control",placeholder:"Email", id: form.object.object_id%>
-                                        </div>
-
-                                        <div class="form-group">
-                                          <%= form.label :CPF%>
-                                          <%= form.text_field :cpf, class:"form-control",placeholder:"CPF", 'data-mask': '000.000.000-00', required: true %>
+                                          <%= form.text_field :email, class:"form-control",placeholder:"Email", id: form.object.object_id, required: true %>
                                         </div>
 
                                         <div class="form-group">
                                           <%= form.label :Data_de_Nascimento  %>
                                           <%= form.text_field :dtnascimento , class:"form-control",placeholder:"Data de Nascimento", 'data-mask': '00/00/0000', required: true %>
                                         </div>
-
-                                        <div class="form-group">
+                                        <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <%= form.label :CPF %>
+                                          <%= form.text_field :cpf, class:"form-control",placeholder:"CPF", 'data-mask': '000.000.000-00', required: true %>
+                                        </div>
+                                        
+                                        <div class="form-group col-md-6 ">
                                           <%= form.label :Telefone %>
                                           <%= form.text_field :phone, class:"form-control",placeholder:"Telefone", 'data-mask': '(00)0.0000-0000', required: true%>
                                         </div>
-
-                                        <div class="form-group">
+                                        </div>
+                                        <div class="form-row">
+                                        <div class="form-group col-md-6">
                                           <%= form.label :Cidade %>
-                                          <%= form.text_field :city, class:"form-control",placeholder:"Cidade", id: form.object.object_id%>
+                                          <%= form.text_field :city, class:"form-control",placeholder:"Cidade", id: form.object.object_id, required: true %>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6">
                                           <%= form.label :Estado %>
-                                          <%= form.text_field :state, class:"form-control",placeholder:"Estado", id: form.object.object_id%>
+                                          <%= form.text_field :state, class:"form-control",placeholder:"Estado", id: form.object.object_id, required: true %>
                                         </div>
-
+                                        </div>
                                         <div class="form-group">
                                           <%= form.label :Motivo_do_Contato  %>
-                                          <%= form.text_field :typecontact , class:"form-control",placeholder:"Ex. Contratos, Dúvidas , Elogios , Críticas e Sugestões ", id: form.object.object_id%>
+                                          <%= form.text_field :typecontact , class:"form-control",placeholder:"Ex. Contratos, Dúvidas , Elogios , Críticas e Sugestões ", id: form.object.object_id, required: true %>
                                         </div>
 
                                         <div class="form-group">
                                           <%= form.label :Mensagem %>
-                                          <%= form.text_area :content , class:"form-control",placeholder:"Conteúdo", id: form.object.object_id%>
+                                          <%= form.text_area :content , class:"form-control",placeholder:"Conteúdo", id: form.object.object_id, required: true  %>
                                         </div>
                                      
                                          <%= form.submit "Salvar" , class: 'btn btn-primary'%>

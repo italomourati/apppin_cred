@@ -14,7 +14,33 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar">
+   
 
+  <!-- Trigger the modal with a button -->
+  <a id="open-modal" data-toggle="modal" data-target="#myModal"></a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+        <div class="card text-center">
+          <div class="card-header">
+           <strong> Atenção </strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Não solicitamos ou exigimos quaisquer valores antecipados para contratações de empréstimos. </p>
+             <strong> Caso receba este tipo de contato, denuncie. </strong>
+             <div class="modal-footer">
+             <button type="button" class="btn btn-light" data-dismiss="modal">FECHAR</button>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</html>
     <nav class="navbar navbar-expand-xl navbar-light bg-light" id="menu_principal">
         <a class="navbar-brand" href="/inicio"><%= image_tag('logo_pincred.png',class: 'logo_topo', alt: 'Logo Pincred')%></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

@@ -38,19 +38,29 @@
                                       </div>
                                     <% end %>
                                     
-                                    <div class="form-row">
-                                       <div class="form-group col-md-4">
-                                         <label for="inputState">Tipo Denúncia</label>
-                                         <select id="inputState" class="form-control">
-                                         <option select>Selecione ... </option>
-                                           <option>Anônima</option>
-                                           <option>Identificada</option>
-                                         </select>
-                                       </div>
+                             <fieldset class="form-group">
+                                 <div class="row">
+                                   <legend class="col-form-label col-sm-4 pt-0">Selecione uma Opção </legend>
+                                   <div class="col-sm-10">
+                                     <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                       <label class="form-check-label" for="gridRadios1">
+                                         <%= link_to 'Anônima','/denuncia-anonima' %>
+                                       </label>
+                                     </div>
+                                     <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                       <label class="form-check-label" for="gridRadios2">
+                                         
+                                         <%= link_to 'Identificada','/denuncia' %>
+                                       </label>
                                      </div>
                                      
-                                        <div class="form-group">
-                                         <%= form.label :Nome  %>
+                                   </div>
+                                 </div>
+                               </fieldset>
+                                          <div class="form-group">
+                                           <%= form.label :Nome  %>
                                          <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: " %>
                                          </div>
                                      <div class="row">

@@ -1,0 +1,2 @@
+module UsersOffice::FeesHelper
+end

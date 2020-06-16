@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :fees
+  end
+  namespace :users_office do
     resources :calls
   end
   namespace :users_office do
@@ -25,6 +28,8 @@ Rails.application.routes.draw do
     post 'contact/new'
     get 'complaint/index'
     post 'complaint/new'
+    get 'fee/index'
+    post 'fee/new'
   end
   namespace :page do
     get 'risk/index'
@@ -120,6 +125,7 @@ Rails.application.routes.draw do
   get '/politica-de-privacidade', to: 'page/privacy#index'
   get '/seguranca', to: 'page/safety#index'
   get '/relatorio-ouvidoria', to: 'page/call#index'
+  get '/denuncia-anonima', to: 'page/fee#new'
 
 
   #rotas admins
@@ -146,4 +152,5 @@ Rails.application.routes.draw do
   get '/admin/rodape', to: 'users_office/footers#index'
   get '/admin/usuarios', to: 'users_office/users#index'
   get '/admin/ouvidoria', to: 'users_office/calls#index'
+  get '/admin/denuncia-anonima', to: 'users_office/fees#index'
  end

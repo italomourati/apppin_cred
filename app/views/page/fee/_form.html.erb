@@ -1,0 +1,63 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  
+    
+    <link rel="icon" href="Favicon.png">
+
+</head>
+
+<body> 
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><strong> <h3> <%= message %> </h3> </strong> <p text="justify"> A PINCRED disponibiliza este canal de comunicação por meio do qual podem ser reportadas, situacões com indícios de ilicitude de qualquer natureza, relacionadas às atividades da instituição. A manifestação pode ser feita através do canal abaixo. </p>  </div>
+                    <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-md-12"> 
+                                 <%= form_with(model: users_office_fee, local: true) do |form| %>
+                                  <% if users_office_fee.errors.any? %>
+                                    <div id="error_explanation">
+                                      <h2><%= pluralize(users_office_fee.errors.count, "error") %> prohibited this users_office_fee from being saved:</h2>
+                                
+                                      <ul>
+                                        <% users_office_fee.errors.full_messages.each do |message| %>
+                                          <li><%= message %></li>
+                                        <% end %>
+                                      </ul>
+                                    </div>
+                                  <% end %>
+                                    
+                             
+                                        <div class="form-group">
+                                          <%= form.label :Mensagem %>
+                                          <%= form.text_area :content , class:"form-control",placeholder:"Conteúdo", id: form.object.object_id%>
+                                        </div>
+                                     
+                                         <%= form.submit "Salvar" , class: 'btn btn-primary'%>
+                                         <% end %>
+                                    
+                                </div>
+                            </div>
+      
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+</body>
+</html>

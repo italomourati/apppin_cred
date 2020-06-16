@@ -53,36 +53,22 @@
                                          <%= form.label :Nome  %>
                                          <%= form.text_field :description , class:"form-control",placeholder:"Insira um Nome: " %>
                                          </div>
-                                    
-                                        <div class="form-group">
+                                     <div class="row">
+                                        <div class="col">
                                           <%= form.label :Email %>
                                           <%= form.text_field :email, class:"form-control",placeholder:"Email", id: form.object.object_id%>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col">
                                           <%= form.label :CPF%>
                                           <%= form.text_field :cpf, class:"form-control",placeholder:"CPF", 'data-mask': '000.000.000-00', required: true %>
                                         </div>
 
-                                        <div class="form-group">
-                                          <%= form.label :Data_de_Nascimento  %>
-                                          <%= form.text_field :dtnascimento , class:"form-control",placeholder:"Data de Nascimento", 'data-mask': '00/00/0000', required: true %>
-                                        </div>
-
-                                        <div class="form-group">
+                                        <div class="col">
                                           <%= form.label :Telefone %>
                                           <%= form.text_field :phone, class:"form-control",placeholder:"Telefone", 'data-mask': '(00)0.0000-0000', required: true%>
                                         </div>
-
-                                        <div class="form-group">
-                                          <%= form.label :Cidade %>
-                                          <%= form.text_field :city, class:"form-control",placeholder:"Cidade", id: form.object.object_id%>
-                                        </div>
-
-                                        <div class="form-group">
-                                          <%= form.label :Estado %>
-                                          <%= form.text_field :state, class:"form-control",placeholder:"Estado", id: form.object.object_id%>
-                                        </div>
+                                    </div>  
 
                                         <div class="form-group">
                                           <%= form.label :Motivo_do_Denúncia  %>

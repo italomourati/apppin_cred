@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users_office do
+    resources :calls
+  end
+  namespace :users_office do
     resources :safeties
   end
   namespace :users_office do
@@ -116,6 +119,7 @@ Rails.application.routes.draw do
   get '/termos-de-uso', to: 'page/terms#index'
   get '/politica-de-privacidade', to: 'page/privacy#index'
   get '/seguranca', to: 'page/safety#index'
+  get '/relatorio-ouvidoria', to: 'page/call#index'
 
 
   #rotas admins
@@ -141,4 +145,5 @@ Rails.application.routes.draw do
   get '/admin/quem-somos', to: 'users_office/whos#index'
   get '/admin/rodape', to: 'users_office/footers#index'
   get '/admin/usuarios', to: 'users_office/users#index'
+  get '/admin/ouvidoria', to: 'users_office/calls#index'
  end

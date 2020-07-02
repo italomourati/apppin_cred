@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :page do
+    get 'calc/index'
+  end
   namespace :users_office do
     resources :fees
   end
@@ -51,6 +54,9 @@ Rails.application.routes.draw do
   end
   namespace :page do
     get 'who/index'
+    get 'calc/index'
+    post 'calc/enviar'
+    post 'calc/reenviar'
   end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :page do
@@ -126,6 +132,10 @@ Rails.application.routes.draw do
   get '/seguranca', to: 'page/safety#index'
   get '/relatorio-ouvidoria', to: 'page/call#index'
   get '/denuncia-anonima', to: 'page/fee#new'
+  get '/simulador-de-consignado', to: 'page/calc#index'
+  #post '/simulador-de-consignado', to: 'page/calc/index'
+  post '/simulador-de-consignado', to: 'page/calc#enviar'
+  post '/simulador-de-consignado', to: 'page/calc#reenviar'
 
 
   #rotas admins

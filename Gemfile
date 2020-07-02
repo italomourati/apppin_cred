@@ -45,6 +45,7 @@ gem "mini_magick"
 #gem 'font-awesome-rails'
 #gem 'sweetalert-rails'
 #gem 'jquery_mask_rails', '~> 0.1.0' - falta o bundle
+gem 'rest', '~> 3.0', '>= 3.0.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

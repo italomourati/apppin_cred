@@ -1,0 +1,377 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Simulação de Emprestimo - PINCRED </title>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 1080px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style> 
+    
+  </head> 
+
+  <body class="bg-light"> 
+  
+    <div class="container">
+   <div class="py-5 text-center">
+    <%#= image_tag("logo_pincred.png", size: "300x200", class: "d-block mx-auto mb-4")%>
+    <h2> Simule seu Empréstimo Consignado </h2>
+  </div>
+  <% if flash[:notice].present? %>
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong><%= flash[:notice] %>  </strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
+  <div class="row">
+
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3"> Dados do Cliente </h4>
+      <form class="needs-validation" novalidate>
+        <%= form_tag page_calc_index_path do %>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="firstName">Nome <span class="text-muted"> * </span> </label>
+            <%= text_field_tag :nome , "", class: 'form-control' %>
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+           </div>
+
+
+        <div class="mb-1">
+          <label for="email">Email <span class="text-muted"> * </span></label>
+         <%= text_field_tag :email , "", class: 'form-control'%>
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+           <label for="address">CPF <span class="text-muted"> * </span> </label>
+          <%= text_field_tag :cpf , "", class: 'form-control' , placeholder: 'Apenas Numeros'%>
+        </div>
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address2">Telefone <span class="text-muted"> * </span></label>
+          <%= text_field_tag :telefone , "", class: 'form-control', placeholder: 'Apenas Numeros sem o DDD'%>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+          <label for="valor"> Valor <span class="text-muted">* </span></label> 
+          <%= text_field_tag :valor , "", class: 'form-control', placeholder: 'Apenas Numeros'%>
+        </div>
+
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="address2"> Data <span class="text-muted"> </span></label>
+          <%= date_field_tag :date , "", class: 'form-control' %>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+           <label for="address2"> Meses <span class="text-muted"></span></label>
+           <%= select_tag :meses, options_for_select([
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24"], :meses.try(:meses).try(:content)), class: 'form-control' %>
+           
+          </div>
+        </div>
+        
+        <hr class="mb-2">
+        <%= submit_tag "Calcular" , class: 'btn btn-primary btn-lg btn-block' , data: { disable_with: ' Aguarde..., fazendo os calculos do seu emprestimo.! ' }%>
+      </form>
+    </div>
+  </div>
+</div>
+
+<% end %> 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+ <div class="container">
+
+ <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-3"> Resultado da Simulação </h4>
+      
+ </h4>
+ <% if flash_message.present?%>
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>
+   <p> Informativo: <%= flash_message %> </p> 
+   <p> Número do Contrato: <%= "#{@status_two}" %>  </p> 
+   <p> Envio: <%= @status_message %> </p> 
+   <p> Status: <%= @status %> </p> 
+  </strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
+<form>
+  <div class="form-row">
+    <div class="col">
+     <label for="address">Valor a Receber </label>
+      <input type="text" placeholder="R$ <%= 
+                 if  @result_segundo_ponto_liquido.present? 
+                    @result_segundo_ponto_liquido
+                    end
+                     
+                  %>" class="form-control is-valid" readonly> </>
+    </div>
+    <div class="col">
+     <label for="address">Valor da Prestação </label>
+      <input type="text"  class="form-control is-valid" placeholder="R$ <%= 
+                 if  @result_segundo_ponto_presta.present? 
+                    @result_segundo_ponto_presta 
+                    end
+                     
+                  %>" readonly>
+    </div>
+    <div class="col">
+     <label for="address">Quantidade de Meses </label>
+      <input type="text"  class="form-control is-valid" placeholder="<%= @month %> " readonly>
+    </div>
+     <div class="col">
+      <label for="address">Valor Contratado</label>
+      <input type="text"  class="form-control is-valid" placeholder="R$ <%= 
+                 if  @result_segundo_ponto_contra.present? 
+                    @result_segundo_ponto_contra 
+                    end
+                     
+                  %>" readonly>
+    </div>
+  </div>
+</form>
+
+ 
+ <br/>
+ <br/>
+ 
+       <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+           <label for="address"> Data 1ª Parcela </label>
+          <input type="text" class="form-control" placeholder=" <%= 
+                 if  @result_segundo_ponto_dtvct1ap.present? 
+                    @result_segundo_ponto_dtvct1ap 
+                    end
+                     
+                  %> " readonly>
+        </div>
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address2"> Data Última Parcela </label>
+          <input type="text" class="form-control" id="dataUltima" placeholder=" <%= 
+                 if  @result_segundo_ponto_dtvctult.present? 
+                    @result_segundo_ponto_dtvctult
+                    end
+                     
+                  %> " readonly>
+          </div>
+        </div>
+
+
+       <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+           <label for="address">Valor do IOF </label>
+          <input type="text" class="form-control" placeholder=" R$ <%= 
+                    if  @result_segundo_ponto_iof.present? 
+                    @result_segundo_ponto_iof
+                    end %> " readonly>
+        </div>
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address2">Valor TAC </label>
+          <input type="text" class="form-control" placeholder=" R$ <%= 
+                 if  @result_segundo_ponto_tac.present? 
+                    @result_segundo_ponto_tac
+                    end
+                     
+                  %>" readonly>
+          </div>
+        </div>
+
+
+       <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+           <label for="address"> Taxa Mensal </label>
+          <input type="text" class="form-control" placeholder=" <%= 
+                 if  @result_segundo_ponto_txam.present? 
+                    @result_segundo_ponto_txam 
+                    end
+                     
+                  %>% " readonly>
+        </div>
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address2">Taxa Anual </label>
+          <input type="text" class="form-control" placeholder=" <%= 
+                    if  @result_segundo_ponto_txaa.present? 
+                    @result_segundo_ponto_txaa
+                    end %>% " readonly>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+         <div class="mb-3">
+           <label for="address"> Taxa CET Mensal </label>
+          <input type="text" class="form-control" placeholder=" <%= 
+                 if  @result_segundo_ponto_txcetam.present? 
+                    @result_segundo_ponto_txcetam
+                    end
+                     
+                  %> % " readonly>
+        </div>
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address2">Taxa CET Anual </label>
+          <input type="text" class="form-control" placeholder=" <%= 
+                 if  @result_segundo_ponto_txcetam.present? 
+                    @result_segundo_ponto_txcetam
+                    end
+                     
+                  %> %" readonly>
+          </div>
+        </div>
+
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-3"> Anexar Documentos </h4>
+      
+ </h4>
+  
+      <%= form_tag page_calc_reenviar_path do %> 
+  
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="detalhe">Numero do Contrato</label>
+      <%= text_field_tag :nr_contrato , "", class: 'form-control', required: true %>
+           
+    </div>
+
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="detalhe">Detalhe</label>
+      <%= select_tag :detalhe, options_for_select([
+                "TODOS OS COMPROVANTES / JUNTOS ",
+                "OUTROS"], :detalhe.try(:detalhe).try(:content)), class: 'form-control' %>
+           
+    </div>
+    <div class="form-group col-md-4">
+      <label for="descricao">Tipo de documento</label>
+      <%= select_tag :descricao, options_for_select([
+                "RG - IDENTIDADE FRENTE E VERSO",
+                "Comprovante de Endereço",
+                "CTPS",
+                "CNH",
+                "Nota Fiscal Equip. Financiado (CR)",
+                "Recibo Compra e Venda (CR)",
+                "RG - Cônjuge",
+                "CPF - Cônjuge",
+                "Ficha Cadastral - Pessoa Jurídica",
+                "Cartão CNPJ",
+                "Declaração Renda e Capacidade de Pgto",
+                "Declaração de Imposto de Renda",
+                "Certificado de Garantia",
+                "Carta de Avaliação",
+                "CRLV",
+                "Certidão negativa de reipersecutórias",
+                "Certificado Reservista",
+                "Carteira de Identidade Profissional",
+                "Inscrição Estadual",
+                "Comprovante de Renda/ContraCheque",
+                "CPF",
+                "Consulta Serasa",
+                "Comprovante Dados Bancários",
+                "Irei Deixar Todos os Documentos (Pessoalmente) "], :descricao.try(:descricao).try(:content)), class: 'form-control' %>
+           
+    </div>
+    
+  </div>
+   <div class="form-group col-md-12">
+    <label for="documentos">Anexar Documentos</label>
+    <%= file_field_tag :doc, class: 'form-control' %>
+  </div> 
+
+           <%= submit_tag "Enviar" , class: 'btn btn-success btn-lg btn-block', data: { confirm: "Enviada Proposta... Aguarde ! || Contrato: #{ @status_two  }, Envio: #{ @status_message} "  } , redirect_to: root_path%>
+      <% end %>
+  </div>
+</div>
+
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019 PINCRED - SOLUÇÕES FINANCEIRAS - BY CI PINTOS </p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="http://www.pincred.com.br">Acessar so Site</a></li>
+      <li class="list-inline-item"><a href="#">Suporte </a></li>
+    </ul>
+  </footer>
+</div>
+
+</html>

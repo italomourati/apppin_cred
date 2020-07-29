@@ -212,7 +212,8 @@
            <label for="address"> Data 1ª Parcela </label>
           <input type="text" class="form-control" placeholder=" <%= 
                  if  @result_segundo_ponto_dtvct1ap.present? 
-                    @result_segundo_ponto_dtvct1ap 
+                    @result_segundo_ponto_dtvct1ap
+                    #DateTime.now.strftime('%d/%m/%Y')
                     end
                      
                   %> " readonly>

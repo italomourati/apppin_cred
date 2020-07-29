@@ -53,8 +53,8 @@ Rails.application.routes.draw do
     get 'correspodent/index'
   end
   namespace :page do
-    get 'who/index'
-    get 'calc/index'
+    get  'who/index'
+    get  'calc/index'
     post 'calc/enviar'
     post 'calc/reenviar'
   end

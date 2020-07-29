@@ -253,6 +253,10 @@ class Page::CalcController < PageController
     detalhe = params[:detalhe] 
     doc = params[:doc]
   
+    #doc = open("tmp/file.pdf")
+
+    doc = Base64.encode64("#{doc.to_s}")
+
     doc = Base64.encode64(doc)
     
 

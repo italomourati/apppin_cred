@@ -7,6 +7,7 @@ class Page::ContactController < PageController
   def new
     @users_office_footers = UsersOffice::Footer.all
     @users_office_contact = UsersOffice::Contact.new
+    EmailFaleConoscoMailer.email_ouvidoria(@users_office_contact).deliver
   end
    
 

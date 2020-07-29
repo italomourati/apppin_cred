@@ -17,6 +17,7 @@ class UsersOffice::ContactsController < UsersOfficeController
   # GET /users_office/contacts/new
   def new
     @users_office_contact = UsersOffice::Contact.new
+    EmailFaleConoscoMailer.email_ouvidoria(@users_office_contact).deliver
   end
 
   # GET /users_office/contacts/1/edit
@@ -27,9 +28,10 @@ class UsersOffice::ContactsController < UsersOfficeController
   # POST /users_office/contacts.json
   def create
     @users_office_contact = UsersOffice::Contact.new(users_office_contact_params)
-
+    EmailFaleConoscoMailer.email_ouvidoria(@users_office_contact).deliver
     respond_to do |format|
       if @users_office_contact.save
+        EmailFaleConoscoMailer.email_ouvidoria(@users_office_contact).deliver
         format.html { redirect_to page_contact_index_path, notice: 'Contato, enviado com sucesso !' }
         format.json { render :show, status: :created, location: @users_office_contact }
       else

@@ -30,6 +30,7 @@ class UsersOffice::ContactsController < UsersOfficeController
     @users_office_contact = UsersOffice::Contact.new(users_office_contact_params)
     respond_to do |format|
       if @users_office_contact.save
+        EmailFaleConoscoMailer.email_contato(@users_office_contact).deliver
         format.html { redirect_to page_contact_index_path, notice: 'Contato, enviado com sucesso !' }
         format.json { render :show, status: :created, location: @users_office_contact }
       else

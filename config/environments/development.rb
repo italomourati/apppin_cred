@@ -4,16 +4,18 @@ Rails.application.configure do
   # Devise config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # Mailtrap
+  # Config - GMAIL 
+  
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :user_name => 'bfcfdfc2e3575d',
-    :password => '72f2299ff34192',
-    :address => "smtp.mailtrap.io",
-    :domain => 'smtp.mailtrap.io',
-    :port => "2525",
-    :authentication => :cram_md5,
+    :user_name => 'compliance@pincred.com.br',
+    :password => 'sonilene30',
+    :address => "smtp.gmail.com",
+    :domain => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => 'plain',
+    :enable_starttls_auto => true
   }
 
   # In the development environment your application's code is reloaded on

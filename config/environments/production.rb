@@ -71,7 +71,7 @@ Rails.application.configure do
     :user_name => 'daniel@pintos.com.br',
     :password => '@AthusOtto0401@@',
     :authentication => 'login',
-    :domain => 'pincred.com.br',
+    :domain => 'pintos.com.br',
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.

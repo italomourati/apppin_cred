@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: '63dea859a1-dO3239@inbox.mailtrap.io'
+  default from: 'compliance@pincred.com.br'
   layout 'mailer'
 end

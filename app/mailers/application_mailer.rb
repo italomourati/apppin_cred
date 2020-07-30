@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'compliance@pincred.com.br'
+  default from: 'admin@pintos.com.br'
   layout 'mailer'
 end

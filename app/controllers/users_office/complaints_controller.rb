@@ -29,6 +29,7 @@ class UsersOffice::ComplaintsController < UsersOfficeController
 
     respond_to do |format|
       if @users_office_complaint.save
+        EmailFaleConoscoMailer.email_ouvidoria(@users_office_complaint).deliver
         format.html { redirect_to page_complaint_index_path, notice: 'Denuncia, salva com sucesso !.' }
         format.json { render :show, status: :created, location: @users_office_complaint }
       else

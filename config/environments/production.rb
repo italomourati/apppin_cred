@@ -62,16 +62,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'smtp.sendgrid.net', port: 587}
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => 587,
-    :enable_starttls_auto => true,
-    :user_name => 'daniel@pintos.com.br',
-    :password => '@AthusOtto0401@@',
-    :authentication => 'login',
-    :domain => 'pintos.com.br',
+    :user_name => 'bfcfdfc2e3575d',
+    :password => '72f2299ff34192',
+    :address => "smtp.mailtrap.io",
+    :domain => 'smtp.mailtrap.io',
+    :port => "2525",
+    :authentication => :cram_md5,
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.

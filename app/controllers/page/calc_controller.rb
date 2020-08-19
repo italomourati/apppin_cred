@@ -7,7 +7,7 @@ class Page::CalcController < PageController
 
     @users_office_footers = UsersOffice::Footer.all
      
-    url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/user")
+    url = URI("https://officer.softsaaspin.com.br/BJ21M05/user")
       
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true
@@ -51,7 +51,7 @@ class Page::CalcController < PageController
   
       puts "Fazendo os calculos da proposta"
       flash[:alert] = 'Dados da Proposta...Validada com sucesso, confira os dados !'
-      url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
+      url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
 
       https = Net::HTTP.new(url.host, url.port);
       https.use_ssl = true
@@ -145,7 +145,7 @@ class Page::CalcController < PageController
      #else
       #flash[:alert] = "Proposta Enviada com Sucesso ! "
     
-    url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
+    url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
 
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true
@@ -229,7 +229,7 @@ class Page::CalcController < PageController
     puts @nr_contrato
     puts "###########################"
 
-    url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/user")
+    url = URI("https://officer.softsaaspin.com.br/BJ21M05/user")
       
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true
@@ -269,7 +269,7 @@ class Page::CalcController < PageController
     @doc = doc
 
     
-    url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501A/incluirAnexo")
+    url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501A/incluirAnexo")
 
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true

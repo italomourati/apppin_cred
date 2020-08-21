@@ -39,7 +39,7 @@ class Page::CalcController < PageController
 
     if params[:commit].to_s == "Calcular"
       #puts "enviando valores"
-      segundo_ponto(response_one,cookies,params[:nome],params[:email],params[:cpf],params[:telefone],params[:valor],params[:date],params[:meses])
+      segundo_ponto(response_one,cookies,params[:nome].try(:upcase),params[:email].try(:upcase),params[:cpf],params[:telefone],params[:valor],params[:date],params[:meses])
     else
       flash[:alert] = "Iniciando a conexão ... Status : OK"
     end 
@@ -211,10 +211,10 @@ class Page::CalcController < PageController
      if params[:commit].to_s == "Enviar"
       #puts @nr_contrato = nr_contrato.detect 
       #puts "enviando valores"    
-      reenviar(response_one,cookies,nr_contrato,params[:nr_contrato],params[:descricao],params[:detalhe],params[:doc]) 
+      reenviar(response_one,cookies,nr_contrato,params[:nr_contrato]) 
       puts @nr_contrato = nr_contrato.detect 
     else
-      flash[:alert] = "Passo seguinte ---> Enviar Documentos (Junte todos em um PDF único!) "
+      flash[:alert] = "Passo seguinte ---> Confirme o numero da proposta para enviar.! ) "
       puts "DADOS NAO COLETADOS, #{@nr_contrato}"
     end 
     
@@ -249,24 +249,24 @@ class Page::CalcController < PageController
     puts response_one.read_body
 
     nr_contrato = params[:nr_contrato]
-    descricao = params[:descricao] 
-    detalhe = params[:detalhe] 
-    doc = params[:doc]
+    #descricao = params[:descricao] 
+    #detalhe = params[:detalhe] 
+    #doc = params[:doc]
   
     #doc = open("tmp/file.pdf")
 
-    doc = Base64.encode64("#{doc.to_s}")
+    #doc = Base64.encode64("#{doc.to_s}")
 
-    doc = Base64.encode64(doc)
+    #doc = Base64.encode64(doc)
     
 
-    puts "MINHA BASE 64"
-    puts "+++++++++++++++++++++++++++"
-    puts "#{doc}"
-    puts "###########################"
+    #puts "MINHA BASE 64"
+    #puts "+++++++++++++++++++++++++++"
+    #puts "#{doc}"
+    #puts "###########################"
 
 
-    @doc = doc
+    #@doc = doc
 
     
     url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501A/incluirAnexo")
@@ -281,9 +281,9 @@ class Page::CalcController < PageController
    
     request.body = "{
       \n\"nrProsp\": \"#{nr_contrato}\",
-      \n\"dsAnexo\":\"#{descricao}\",
-      \n\"nmArq\": \"#{detalhe}\",
-      \n\"imAnexo\": \"#{puts @doc.to_s}\",
+      \n\"dsAnexo\": \"Sem Documentos\",
+      \n\"nmArq\": \"Sem Documentos\",
+      \n\"imAnexo\": \"Sem Documentos\",
       \n\"idCCB\": \"N\"\n}"
     
     response = https.request(request)

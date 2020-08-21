@@ -54,7 +54,7 @@
         <div class="row">
           <div class="col-md-12 mb-3">
             <label for="firstName">Nome <span class="text-muted"> * </span> </label>
-            <%= text_field_tag :nome , "", class: 'form-control' %>
+            <%= text_field_tag :nome , "", class: 'form-control' , style: 'text-transform: uppercase' %>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
@@ -64,7 +64,7 @@
 
         <div class="mb-1">
           <label for="email">Email <span class="text-muted"> * </span></label>
-         <%= text_field_tag :email , "", class: 'form-control'%>
+         <%= text_field_tag :email, "", class: 'form-control', style: 'text-transform: uppercase'%>
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -302,7 +302,7 @@
         </div>
 
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-3"> Anexar Documentos </h4>
+        <h4 class="mb-3"> Confirmar envio da proposta </h4>
       
  </h4>
   
@@ -314,52 +314,6 @@
       <%= text_field_tag :nr_contrato , "", class: 'form-control', required: true %>
            
     </div>
-
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="detalhe">Detalhe</label>
-      <%= select_tag :detalhe, options_for_select([
-                "TODOS OS COMPROVANTES / JUNTOS ",
-                "OUTROS"], :detalhe.try(:detalhe).try(:content)), class: 'form-control' %>
-           
-    </div>
-    <div class="form-group col-md-4">
-      <label for="descricao">Tipo de documento</label>
-      <%= select_tag :descricao, options_for_select([
-                "RG - IDENTIDADE FRENTE E VERSO",
-                "Comprovante de Endereço",
-                "CTPS",
-                "CNH",
-                "Nota Fiscal Equip. Financiado (CR)",
-                "Recibo Compra e Venda (CR)",
-                "RG - Cônjuge",
-                "CPF - Cônjuge",
-                "Ficha Cadastral - Pessoa Jurídica",
-                "Cartão CNPJ",
-                "Declaração Renda e Capacidade de Pgto",
-                "Declaração de Imposto de Renda",
-                "Certificado de Garantia",
-                "Carta de Avaliação",
-                "CRLV",
-                "Certidão negativa de reipersecutórias",
-                "Certificado Reservista",
-                "Carteira de Identidade Profissional",
-                "Inscrição Estadual",
-                "Comprovante de Renda/ContraCheque",
-                "CPF",
-                "Consulta Serasa",
-                "Comprovante Dados Bancários",
-                "Irei Deixar Todos os Documentos (Pessoalmente) "], :descricao.try(:descricao).try(:content)), class: 'form-control' %>
-           
-    </div>
-    
-  </div>
-   <div class="form-group col-md-12">
-    <label for="documentos">Anexar Documentos</label>
-    <%= file_field_tag :doc, class: 'form-control' %>
-  </div> 
-
            <%= submit_tag "Enviar" , class: 'btn btn-success btn-lg btn-block', data: { confirm: "Enviada Proposta... Aguarde ! || Contrato: #{ @status_two  }, Envio: #{ @status_message} "  } , redirect_to: root_path%>
       <% end %>
   </div>

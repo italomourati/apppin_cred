@@ -43,7 +43,7 @@ gem 'ckeditor'
 gem "mini_magick"
 #gem 'font_awesome5_rails'
 #gem 'font-awesome-rails'
-#gem 'sweetalert-rails'
+gem 'sweetalert2-rails'
 #gem 'jquery_mask_rails', '~> 0.1.0' - falta o bundle
 gem 'rest', '~> 3.0', '>= 3.0.8'
 

@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Simulação de Emprestimo - PINCRED </title>
+    <title> Simulação de CDC - PINCRED </title>
 
     <style>
       .bd-placeholder-img {
@@ -35,7 +35,7 @@
     <div class="container">
    <div class="py-5 text-center">
     <%#= image_tag("logo_pincred.png", size: "300x200", class: "d-block mx-auto mb-4")%>
-    <h2> Simule seu Empréstimo Consignado </h2>
+    <h2> Simule seu CDC - Móveis e Eletros </h2>
   </div>
   <% if flash[:notice].present? %>
      <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -48,60 +48,19 @@
   <div class="row">
 
     <div class="col-md-12 order-md-1">
-      <h4 class="mb-3"> Dados do Cliente </h4>
+      <h4 class="mb-3"> Dados da Simulação </h4>
       <form class="needs-validation" novalidate>
-        <%= form_tag page_calc_index_path do %>
+        <%= form_tag page_calc_two_index_path do %>
+       
         <div class="row">
-          <div class="col-md-12 mb-3">
-            <label for="firstName">Nome <span class="text-muted"> * </span> </label>
-            <%= text_field_tag :nome , "", class: 'form-control' , style: 'text-transform: uppercase' %>
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-           </div>
-
-
-        <div class="mb-1">
-          <label for="email">Email <span class="text-muted"> * </span></label>
-         <%= text_field_tag :email, "", class: 'form-control', style: 'text-transform: uppercase'%>
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
-         <div class="mb-3">
-           <label for="address">CPF <span class="text-muted"> * </span> </label>
-          <%= text_field_tag :cpf , "", class: 'form-control' , placeholder: 'Apenas Numeros'%>
-        </div>
-
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="address2">Telefone <span class="text-muted"> * </span></label>
-          <%= text_field_tag :telefone , "", class: 'form-control', placeholder: 'Apenas Numeros sem o DDD'%>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-3 mb-2">
          <div class="mb-3">
           <label for="valor"> Valor <span class="text-muted">* </span></label> 
           <%= text_field_tag :valor , "", class: 'form-control', placeholder: 'Apenas Numeros'%>
         </div>
 
           </div>
-          <div class="col-md-4 mb-3">
-            <label for="address2"> Data <span class="text-muted"> </span></label>
-          <%= date_field_tag :date , "", class: 'form-control' %>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
+
           <div class="form-group col-md-2">
            <label for="address2"> Meses <span class="text-muted"></span></label>
            <%= select_tag :meses, options_for_select([
@@ -134,7 +93,8 @@
         </div>
         
         <hr class="mb-2">
-        <%= submit_tag "Calcular" , class: 'btn btn-primary btn-lg btn-block' , data: { disable_with: ' Aguarde..., fazendo os calculos do seu emprestimo.! ' }%>
+        <%= submit_tag "Calcular" , class: 'btn btn-primary btn-lg ' , data: { disable_with: ' Aguarde..., fazendo os calculos do seu CDC.! ' }%>
+        <hr class="mb-2">
       </form>
     </div>
   </div>
@@ -157,9 +117,7 @@
  <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>
    <p> Informativo: <%= flash_message %> </p> 
-   <p> Número do Contrato: <%= "#{@status_two}" %>  </p> 
-   <p> Envio: <%= @status_message %> </p> 
-   <p> Status: <%= @status %> </p> 
+
   </strong> 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -169,7 +127,7 @@
 <form>
   <div class="form-row">
     <div class="col">
-     <label for="address">Valor a Receber </label>
+     <label for="address">Valor Solicitado no CDC  </label>
       <input type="text" placeholder="R$ <%= 
                  if  @result_segundo_ponto_liquido.present? 
                     @result_segundo_ponto_liquido
@@ -206,32 +164,6 @@
  <br/>
  <br/>
  
-       <div class="row">
-          <div class="col-md-6 mb-3">
-         <div class="mb-3">
-           <label for="address"> Data 1ª Parcela </label>
-          <input type="text" class="form-control" placeholder=" <%= 
-                 if  @result_segundo_ponto_dtvct1ap.to_s.to_date.strftime('%d/%m/%Y') 
-                    @result_segundo_ponto_dtvct1ap
-                    #DateTime.now.strftime('%d/%m/%Y')
-                    end
-                     
-                  %> " readonly>
-        </div>
-
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="address2"> Data Última Parcela </label>
-          <input type="text" class="form-control" id="dataUltima" placeholder=" <%= 
-                 if  @result_segundo_ponto_dtvctult.present? 
-                    @result_segundo_ponto_dtvctult
-                    end
-                     
-                  %> " readonly>
-          </div>
-        </div>
-
-
        <div class="row">
           <div class="col-md-6 mb-3">
          <div class="mb-3">
@@ -301,24 +233,15 @@
           </div>
         </div>
 
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-3"> Confirmar envio da proposta </h4>
-      
- </h4>
-  
-      <%= form_tag page_calc_reenviar_path do %> 
-  
+   <%= form_tag page_calc_two_up_clear_path do %>
+   <hr class="mb-2">
   <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="detalhe">Numero do Contrato</label>
-      <%= text_field_tag :nr_contrato , "", class: 'form-control', required: true %>
-           
-    </div>
-
+         
+           <%= submit_tag "Nova Simulação" , class: 'btn btn-success ', data: { confirm: " Limpando Simulação ... "  } , redirect_to: '/simulador-de-cdc' %>
       
-           <%= submit_tag "Enviar" , class: 'btn btn-success btn-lg btn-block', data: { confirm: "Enviada Proposta... Aguarde ! || Contrato: #{ @status_two  }, Envio: #{ @status_message} "  } , redirect_to: root_path%>
-      <% end %>
   </div>
+  <hr class="mb-2">
+  <% end %> 
 </div>
 
 
@@ -332,3 +255,4 @@
 </div>
 
 </html>
+

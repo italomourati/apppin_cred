@@ -25,6 +25,7 @@ import '../src/custom';
 import '../src/style';
 import '../src/mask';
 import '../src/infos';
+import 'sweetalert2';
 //import 'sweetalert';
 //import "../stylesheets/application";  // <- Add this line
 //import 'font_awesome5';

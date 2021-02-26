@@ -39,7 +39,8 @@ class Page::CalcController < PageController
 
     if params[:commit].to_s == "Calcular"
       #puts "enviando valores"
-      segundo_ponto(response_one,cookies,params[:nome].try(:upcase),params[:email].try(:upcase),params[:cpf],params[:telefone],params[:valor],params[:date],params[:meses])
+      segundo_ponto(response_one,cookies,params[:nome].try(:upcase),params[:email].try(:upcase),
+                    params[:cpf],params[:telefone],params[:valor],params[:date],params[:meses])
     else
       flash[:alert] = "Iniciando a conexão ... Status : OK"
     end 
@@ -249,21 +250,21 @@ class Page::CalcController < PageController
     puts response_one.read_body
 
     nr_contrato = params[:nr_contrato]
-    #descricao = params[:descricao] 
-    #detalhe = params[:detalhe] 
-    #doc = params[:doc]
+    descricao = params[:descricao] 
+    detalhe = params[:detalhe] 
+    doc = params[:doc]
   
     #doc = open("tmp/file.pdf")
 
-    #doc = Base64.encode64("#{doc.to_s}")
+    doc = Base64.encode64("#{doc.to_s}")
 
-    #doc = Base64.encode64(doc)
+    doc = Base64.encode64(doc)
     
 
-    #puts "MINHA BASE 64"
-    #puts "+++++++++++++++++++++++++++"
-    #puts "#{doc}"
-    #puts "###########################"
+    puts "MINHA BASE 64"
+    puts "+++++++++++++++++++++++++++"
+    puts "#{doc}"
+    puts "###########################"
 
 
     #@doc = doc
@@ -281,9 +282,9 @@ class Page::CalcController < PageController
    
     request.body = "{
       \n\"nrProsp\": \"#{nr_contrato}\",
-      \n\"dsAnexo\": \"Sem Documentos\",
-      \n\"nmArq\": \"Sem Documentos\",
-      \n\"imAnexo\": \"Sem Documentos\",
+      \n\"dsAnexo\": \"#{descricao}\",
+      \n\"nmArq\": \"#{detalhe}\",
+      \n\"imAnexo\": \"#{doc}\",
       \n\"idCCB\": \"N\"\n}"
     
     response = https.request(request)

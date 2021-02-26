@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :page do
+    get 'calc_two/index'
+    post 'calc_two/index'
+    post 'calc_two/up_clear'
+  end
+  namespace :page do
+    get 'standby/index'
+   
+  end
+  namespace :page do
     get 'calc/index'
   end
   namespace :users_office do
@@ -136,6 +145,10 @@ Rails.application.routes.draw do
   #post '/simulador-de-consignado', to: 'page/calc/index'
   post '/simulador-de-consignado', to: 'page/calc#enviar'
   post '/simulador-de-consignado', to: 'page/calc#reenviar'
+  get 'informacao-pdf' , to: 'page/standby#index'
+  get '/simulador-de-cdc', to: 'page/calc_two#index'
+  post '/simulador-de-cdc', to: 'page/calc_two#enviar'
+  post '/simulador-de-cdc', to: 'page/calc_two#up_clear'
 
 
   #rotas admins

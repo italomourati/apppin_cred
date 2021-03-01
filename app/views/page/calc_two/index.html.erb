@@ -56,7 +56,7 @@
           <div class="col-md-3 mb-2">
          <div class="mb-3">
           <label for="valor"> Valor <span class="text-muted">* </span></label> 
-          <%= text_field_tag :valor , "", class: 'form-control', placeholder: 'Apenas Numeros'%>
+          <%= text_field_tag :valor , '', class: 'form-control', placeholder: 'Apenas Numeros',id:'money',required: true  %>
         </div>
 
           </div>
@@ -127,7 +127,7 @@
 </div>
 <% end %>
 <form>
-  <div class="form-row">
+  <div class="form-row-2">
     <div class="col">
      <label for="address">Valor Solicitado no CDC  </label>
       <input type="text" placeholder="R$ <%= 
@@ -135,11 +135,11 @@
                     @result_segundo_ponto_liquido
                     end
                      
-                  %>" class="form-control is-valid" readonly> </>
+                  %>" class="form-control" readonly> </>
     </div>
     <div class="col">
      <label for="address">Valor da Prestação </label>
-      <input type="text"  class="form-control is-valid" placeholder="R$ <%= 
+      <input type="text"  class="form-control" placeholder="R$ <%= 
                  if  @result_segundo_ponto_presta.present? 
                     @result_segundo_ponto_presta 
                     end
@@ -148,11 +148,11 @@
     </div>
     <div class="col">
      <label for="address">Quantidade de Meses </label>
-      <input type="text"  class="form-control is-valid" placeholder="<%= @month %> " readonly>
+      <input type="text"  class="form-control" placeholder="<%= @month %> " readonly>
     </div>
      <div class="col">
       <label for="address">Valor Contratado</label>
-      <input type="text"  class="form-control is-valid" placeholder="R$ <%= 
+      <input type="text"  class="form-control" placeholder="R$ <%= 
                  if  @result_segundo_ponto_contra.present? 
                     @result_segundo_ponto_contra 
                     end
@@ -254,6 +254,7 @@
       <li class="list-inline-item"><a href="#">Suporte </a></li>
     </ul>
   </footer>
+  
 </div>
 
 </html>

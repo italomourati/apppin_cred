@@ -66,7 +66,7 @@ class Page::CalcTwoController < PageController
        \n\"nrAgen\":\"19\",
        \n\"cdProd\":\"1015\",
        \n\"idCarCtr\":\"5\",
-       \n\"vlContra\":#{valor.to_i},
+       \n\"vlContra\":#{valor.gsub(".","").to_i},
        \n\"txJuros\":\"1.520000\",
        \n\"qtPrest\":#{meses.to_i}}"
 
@@ -131,7 +131,6 @@ class Page::CalcTwoController < PageController
   
   end 
  
-
 
   def up_clear 
     redirect_to '/simulador-de-cdc' , notice: 'Limpeza Realizada com Sucesso'

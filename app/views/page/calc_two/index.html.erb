@@ -64,7 +64,6 @@
           <div class="form-group col-md-2">
            <label for="address2"> Meses <span class="text-muted"></span></label>
            <%= select_tag :meses, options_for_select([
-                "24",
                 "1",
                 "2",
                 "3",
@@ -88,7 +87,7 @@
                 "21",
                 "22",
                 "23",
-                "24"], :meses.try(:meses).try(:content)), class: 'form-control'%>
+                ["24",:selected => "24"]], :meses.try(:meses).try(:content)), class: 'form-control'%>
            
           </div>
         </div>

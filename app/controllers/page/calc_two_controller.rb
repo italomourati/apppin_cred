@@ -39,17 +39,20 @@ class Page::CalcTwoController < PageController
 
     if params[:commit].to_s == "Calcular"
       #puts "enviando valores"
-      segundo_ponto(response_one,cookies,params[:valor],params[:meses])
+      segundo_ponto(response_one,cookies,params[:valor],params[:meses]) 
+              params[:valor] = params[:valor].gsub('.','').gsub(',','.').to_f
     else
       flash[:alert] = "Iniciando a conexão ... Status : OK"
     end 
     
+     valor = params[:valor]
+       #puts "Meu .....#{valor.gsub('.','').gsub(',','.').to_f}"
 
   end 
 
   def segundo_ponto(response_one,cookies,valor,meses)
   
-    puts "Fazendo os calculos da proposta"
+    puts "Fazendo os calculos da proposta #{ valor.gsub('.','').gsub(',','.').to_f } "
     flash[:alert] = 'Dados da Proposta...Realizada com sucesso, confira os dados !'
     url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
 
@@ -66,7 +69,7 @@ class Page::CalcTwoController < PageController
        \n\"nrAgen\":\"19\",
        \n\"cdProd\":\"1015\",
        \n\"idCarCtr\":\"5\",
-       \n\"vlContra\":#{valor.gsub(".","").to_i},
+       \n\"vlContra\":#{valor.gsub('.','').gsub(',','.').to_f},
        \n\"txJuros\":\"1.520000\",
        \n\"qtPrest\":#{meses.to_i}}"
 
@@ -76,7 +79,7 @@ class Page::CalcTwoController < PageController
     @month = meses.to_i
     # Aqui os valores que vao na INDEX
 
-    @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"]
+    @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"] 
     @result_segundo_ponto_presta = JSON.parse(response.read_body)["calculo"]["vlPresta"]
     @result_segundo_ponto_iof = JSON.parse(response.read_body)["calculo"]["vlIof"]
     @result_segundo_ponto_tac = JSON.parse(response.read_body)["calculo"]["vlTac"]

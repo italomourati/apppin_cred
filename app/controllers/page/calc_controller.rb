@@ -68,7 +68,7 @@ class Page::CalcController < PageController
          \n\"nrCPF\":\"#{cpf.to_s}\",
          \n\"cdProd\":\"3018\",
          \n\"idCarCtr\":\"30\",
-         \n\"vlContra\":#{valor.to_i},
+         \n\"vlContra\":#{valor.gsub('.','').gsub(',','.').to_f},
          \n\"txJuros\":\"1.50\",
          \n\"qtPrest\":#{meses.to_i},
          \n\"dtContra\":\"#{date.to_date.strftime("%Y%m%d")}\",

@@ -80,11 +80,23 @@ class Page::CalcTwoController < PageController
     # Aqui os valores que vao na INDEX
 
     @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"] 
+      
+      puts @result_segundo_ponto_liquido.to_s.length
+
+  
+      #puts @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',')
+     
+      #puts @result_segungo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(1,'.')
+     
+      #puts @result_segungo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(2,'.')
+     
+    
     @result_segundo_ponto_presta = JSON.parse(response.read_body)["calculo"]["vlPresta"]
     @result_segundo_ponto_iof = JSON.parse(response.read_body)["calculo"]["vlIof"]
     @result_segundo_ponto_tac = JSON.parse(response.read_body)["calculo"]["vlTac"]
     @result_segundo_ponto_vloutvlr = JSON.parse(response.read_body)["calculo"]["vlOutvlr"]
     @result_segundo_ponto_contra = JSON.parse(response.read_body)["calculo"]["vlContra"]
+    puts @result_segundo_ponto_contra.to_s.length
     @result_segundo_ponto_seguro = JSON.parse(response.read_body)["calculo"]["vlSeguro"]
     @result_segundo_ponto_dtvct1ap = JSON.parse(response.read_body)["calculo"]["dtVct1ap"]
      if @result_segundo_ponto_dtvct1ap == true
@@ -99,7 +111,8 @@ class Page::CalcTwoController < PageController
  
    
 
-    puts JSON.parse(response.read_body)["calculo"]["vlLiquid"] 
+    puts JSON.parse(response.read_body)["calculo"]["vlLiquid"]
+    puts "AQUI .... #{@result_segundo_ponto_liquido.to_s}"
     puts JSON.parse(response.read_body)["calculo"]["vlPresta"]
     puts JSON.parse(response.read_body)["calculo"]["vlIof"]
     puts JSON.parse(response.read_body)["calculo"]["vlTac"]

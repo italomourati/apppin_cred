@@ -138,7 +138,7 @@
                  elsif @result_segundo_ponto_liquido.to_s.length == 6
                     @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',') 
                  elsif @result_segundo_ponto_liquido.to_s.length == 7
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(2,'.') 
+                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(1,'.') 
                  elsif @result_segundo_ponto_liquido.to_s.length == 8
                     @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(2,'.')
                  end

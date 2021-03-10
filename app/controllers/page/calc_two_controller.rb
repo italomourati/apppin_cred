@@ -2,6 +2,7 @@ class Page::CalcTwoController < PageController
   require "uri"
   require "net/http"
   require "base64"
+  require 'brdinheiro'
 
   def index 
 
@@ -79,18 +80,8 @@ class Page::CalcTwoController < PageController
     @month = meses.to_i
     # Aqui os valores que vao na INDEX
 
-    @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"] 
-      
-      puts @result_segundo_ponto_liquido.to_s.length
-
-  
-      #puts @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',')
-     
-      #puts @result_segungo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(1,'.')
-     
-      #puts @result_segungo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(2,'.')
-     
-    
+    @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"]
+    @result_segundo_ponto_liquido.to_s
     @result_segundo_ponto_presta = JSON.parse(response.read_body)["calculo"]["vlPresta"]
     @result_segundo_ponto_iof = JSON.parse(response.read_body)["calculo"]["vlIof"]
     @result_segundo_ponto_tac = JSON.parse(response.read_body)["calculo"]["vlTac"]

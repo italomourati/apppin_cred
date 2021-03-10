@@ -130,19 +130,11 @@
   <div class="form-row-2">
     <div class="col">
      <label for="address">Valor Solicitado no CDC  </label>
-      <input type="text" placeholder="R$ <%= 
-                 if  @result_segundo_ponto_liquido.to_s.length == 4 
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',') 
-                    elsif @result_segundo_ponto_liquido.to_s.length == 5
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',')
-                 elsif @result_segundo_ponto_liquido.to_s.length == 6
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',') 
-                 elsif @result_segundo_ponto_liquido.to_s.length == 7
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(1,'.') 
-                 elsif @result_segundo_ponto_liquido.to_s.length == 8
-                    @result_segundo_ponto_liquido.to_s.gsub(/[^0-9]+/,',').insert(2,'.')
+      <input type="text" placeholder=" R$ <%= 
+                 if  @result_segundo_ponto_liquido.present?
+                    @result_segundo_ponto_liquido.real 
                  end
-                     
+                        
                   %>" class="form-control" readonly> </>
     </div>
     <div class="col">
@@ -160,16 +152,11 @@
     </div>
      <div class="col">
       <label for="address">Valor Contratado</label>
-      <input type="text"  class="form-control" placeholder="R$ <%= 
+      <input type="text"  class="form-control" placeholder=" R$ <%= 
             
-                if  @result_segundo_ponto_contra.to_s.length == 7 
-                    @result_segundo_ponto_contra.to_s.gsub(/[^0-9]+/,',').insert(1,'.') 
-                 elsif @result_segundo_ponto_contra.to_s.length == 8
-                    @result_segundo_ponto_contra.to_s.gsub(/[^0-9]+/,',').insert(2,'.') 
-                 elsif @result_segundo_ponto_contra.to_s.length == 6
-                   @result_segundo_ponto_contra.to_s.gsub(/[^0-9]+/,',')
-                 elsif @result_segundo_ponto_contra.to_s.length == 5
-                   @result_segundo_ponto_contra.to_s.gsub(/[^0-9]+/,',')
+                if  @result_segundo_ponto_contra.to_s
+                  @result_segundo_ponto_contra.real 
+                
                  end
                      
                   %>" readonly>

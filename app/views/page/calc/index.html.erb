@@ -172,7 +172,7 @@
      <label for="address">Valor a Receber </label>
       <input type="text" placeholder="R$ <%= 
                  if  @result_segundo_ponto_liquido.present? 
-                    @result_segundo_ponto_liquido
+                    @result_segundo_ponto_liquido.real
                     end
                      
                   %>" class="form-control is-valid" readonly> </>
@@ -194,7 +194,7 @@
       <label for="address">Valor Contratado</label>
       <input type="text"  class="form-control is-valid" placeholder="R$ <%= 
                  if  @result_segundo_ponto_contra.present? 
-                    @result_segundo_ponto_contra 
+                    @result_segundo_ponto_contra.real 
                     end
                      
                   %>" readonly>

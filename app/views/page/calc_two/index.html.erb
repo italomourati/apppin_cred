@@ -141,7 +141,7 @@
      <label for="address">Valor da Prestação </label>
       <input type="text"  class="form-control" placeholder="R$ <%= 
                  if  @result_segundo_ponto_presta.present? 
-                    @result_segundo_ponto_presta 
+                    @result_segundo_ponto_presta.real 
                     end
                      
                   %>" readonly>
@@ -154,7 +154,7 @@
       <label for="address">Valor Contratado</label>
       <input type="text"  class="form-control" placeholder=" R$ <%= 
             
-                if  @result_segundo_ponto_contra.to_s
+                if  @result_segundo_ponto_contra.present?
                   @result_segundo_ponto_contra.real 
                 
                  end
@@ -174,7 +174,7 @@
            <label for="address">Valor do IOF </label>
           <input type="text" class="form-control" placeholder=" R$ <%= 
                     if  @result_segundo_ponto_iof.present? 
-                    @result_segundo_ponto_iof
+                    @result_segundo_ponto_iof.real
                     end %> " readonly>
         </div>
 
@@ -183,7 +183,7 @@
             <label for="address2">Valor TAC </label>
           <input type="text" class="form-control" placeholder=" R$ <%= 
                  if  @result_segundo_ponto_tac.present? 
-                    @result_segundo_ponto_tac
+                    @result_segundo_ponto_tac.real
                     end
                      
                   %>" readonly>

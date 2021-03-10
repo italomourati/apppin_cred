@@ -2,6 +2,8 @@ class Page::CalcController < PageController
   require "uri"
   require "net/http"
   require "base64"
+  require 'brdinheiro'
+  require 'brdata'
 
   def index 
 

@@ -134,7 +134,7 @@
         </div>
         
         <hr class="mb-2">
-        <%= submit_tag "Calcular" , class: 'btn btn-primary btn-lg btn-block' , data: { disable_with: ' Aguarde..., fazendo os calculos do seu emprestimo.! ' }%>
+        <%= submit_tag "Calcular" , class: 'btn btn-primary btn-lg btn-block' , data: { disable_with: 'Aguarde...Fazendo os cálculos do seu empréstimo.! ' }%>
       </form>
     </div>
   </div>
@@ -146,20 +146,17 @@
 <br/>
 <br/>
 <br/>
-
+<% if @result_segundo_ponto_liquido.present? == true %> 
  <div class="container">
 
  <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-3"> Resultado da Simulação </h4>
+        <h4 class="mb-3"> Resultado da Simulação : </h4>
       
  </h4>
  <% if flash_message.present? == true %>
  <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>
    <p> Informativo: <%= flash_message %> </p> 
-   <p> Número do Contrato: <%= "#{@status_two}" %>  </p> 
-   <p> Envio: <%= @status_message %> </p> 
-   <p> Status: <%= @status %> </p> 
   </strong> 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -211,9 +208,8 @@
          <div class="mb-3">
            <label for="address"> Data 1ª Parcela </label>
           <input type="text" class="form-control" placeholder=" <%= 
-                 if  @result_segundo_ponto_dtvct1ap
-                    @result_segundo_ponto_dtvct1ap
-                    #DateTime.now.strftime('%d/%m/%Y')
+                 if  @result_segundo_ponto_dtvct1ap.present?
+                    @result_segundo_ponto_dtvct1ap.to_s.to_date.strftime('%d/%m/%Y')
                     end
                      
                   %> " readonly>
@@ -224,7 +220,7 @@
             <label for="address2"> Data Última Parcela </label>
           <input type="text" class="form-control" id="dataUltima" placeholder=" <%= 
                  if  @result_segundo_ponto_dtvctult.present? 
-                    @result_segundo_ponto_dtvctult
+                    @result_segundo_ponto_dtvctult.to_s.to_date.strftime('%d/%m/%Y')
                     end
                      
                   %> " readonly>
@@ -293,8 +289,8 @@
           <div class="col-md-6 mb-3">
             <label for="address2">Taxa CET Anual </label>
           <input type="text" class="form-control" placeholder=" <%= 
-                 if  @result_segundo_ponto_txcetam.present? 
-                    @result_segundo_ponto_txcetam
+                 if  @result_segundo_ponto_txcetaa.present? 
+                 @result_segundo_ponto_txcetaa
                     end
                      
                   %> %" readonly>
@@ -302,25 +298,30 @@
         </div>
 
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-3"> Confirmar envio da proposta </h4>
+        <h4 class="mb-3"> Enviar Proposta : </h4>
       
  </h4>
-  
-      <%= form_tag page_calc_reenviar_path do %> 
-  
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="detalhe">Numero do Contrato</label>
-      <%= text_field_tag :nr_contrato , "", class: 'form-control', required: true %>
-           
-    </div>
+         <div class="form-row">
 
-      
-           <%= submit_tag "Enviar" , class: 'btn btn-success btn-lg btn-block', data: { confirm: "Enviada Proposta... Aguarde ! || Contrato: #{ @status_two  }, Envio: #{ @status_message} "  } , redirect_to: root_path%>
-      <% end %>
-  </div>
+           <%= link_to "Enviar", 
+               {
+                :controller => 'page/calc',
+                :action => 'enviar',
+                :method => 'post',
+                :dados => 
+                [ 
+                  params[:nome],params[:email],params[:cpf],
+                  params[:telefone],params[:valor],params[:date],params[:meses]
+                ]
+               },
+               :class => 'btn btn-success btn-lg btn-block'
+           %>
+
+         </div>
+        
 </div>
 
+<% end %>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2019 PINCRED - SOLUÇÕES FINANCEIRAS - BY CI PINTOS </p>

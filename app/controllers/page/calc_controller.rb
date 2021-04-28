@@ -4,6 +4,7 @@ class Page::CalcController < PageController
   require "base64"
   require 'brdinheiro'
   require 'brdata'
+  before_action :verify_proposta, only:[:enviar]
 
   def index 
 
@@ -18,33 +19,20 @@ class Page::CalcController < PageController
     request.basic_auth("pincred","Daniel@2020")
       
     response_one = https.request(request)
-      
-    @cookies = response_one.response['set-cookie']
-    @content_type = response_one["content-type"]
-    @cookie = response_one.response['set-cookie']
-
-    puts response_one.code
-     response_one["auth"]
-     response_one["content-type"]
-     response_one.response['set-cookie']
-    puts response_one.read_body
     
-    puts "MEU AUTH"
-    #puts "#{"Bearer"' '+ @auth }"
-    puts "meu content"
-    #puts @content_type
-    puts "cokkies"
-    #puts @cookie 
+    response_one.code
+    session[:auth] = response_one["auth"]
+    session[:auth]
+    session[:content_type] = response_one["content-type"]
+    session[:content_type]
+    response_one.response['set-cookie']
+    session[:set_cookies] = response_one['set-cookie']
+    response_one.read_body
     
-    flash[:alert] = 'Iniciando a conexão ... Status : OK'
-    #segundo_ponto(response_one,cookies,nome,email,cpf,telefone,valor,taxa,meses) cade aqui de onde vem o nome email cpf ??
 
     if params[:commit].to_s == "Calcular"
-      #puts "enviando valores"
       segundo_ponto(response_one,cookies,params[:nome].try(:upcase),params[:email].try(:upcase),
                     params[:cpf],params[:telefone],params[:valor],params[:date],params[:meses])
-    else
-      flash[:alert] = "Iniciando a conexão ... Status : OK"
     end 
     
 
@@ -52,8 +40,6 @@ class Page::CalcController < PageController
 
     def segundo_ponto(response_one,cookies,nome,email,cpf,telefone,valor,date,meses)
   
-      puts "Fazendo os calculos da proposta"
-      flash[:alert] = 'Dados da Proposta...Validada com sucesso, confira os dados !'
       url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
 
       https = Net::HTTP.new(url.host, url.port);
@@ -61,7 +47,7 @@ class Page::CalcController < PageController
 
       request = Net::HTTP::Post.new(url)
       request["XSRF-TOKEN"] = "#{cookies}"
-      request["Content-Type"] = "#{response_one["content-type"]} "
+      request["Content-Type"] = "#{response_one["content-type"]}"
       request["Authorization"] = "#{"Bearer"' '+response_one["auth"]}"
       request.body = "{
          \n\"nmLogin\":\"pincred\",
@@ -78,10 +64,10 @@ class Page::CalcController < PageController
          \n\"idRefin\":\"N\"\n}"
 
       response = https.request(request)
-      puts response.read_body
+      response.read_body
 
       @month = meses.to_i
-      # Aqui os valores que vao na INDEX
+
 
       @result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"]
       @result_segundo_ponto_presta = JSON.parse(response.read_body)["calculo"]["vlPresta"]
@@ -101,7 +87,6 @@ class Page::CalcController < PageController
       @result_segundo_ponto_txcetam = JSON.parse(response.read_body)["calculo"]["txCetAm"]
       @result_segundo_ponto_txcetaa = JSON.parse(response.read_body)["calculo"]["txCetAa"]
    
-     
 
       puts JSON.parse(response.read_body)["calculo"]["vlLiquid"] 
       puts JSON.parse(response.read_body)["calculo"]["vlPresta"]
@@ -118,192 +103,103 @@ class Page::CalcController < PageController
       puts JSON.parse(response.read_body)["calculo"]["txCetAa"]
 
     # Valores que vao no terceiro ponto
-
-      result_segundo_ponto_liquido = JSON.parse(response.read_body)["calculo"]["vlLiquid"]
-      result_segundo_ponto_presta = JSON.parse(response.read_body)["calculo"]["vlPresta"]
-      result_segundo_ponto_iof = JSON.parse(response.read_body)["calculo"]["vlIof"]
-      result_segundo_ponto_tac = JSON.parse(response.read_body)["calculo"]["vlTac"]
-      result_segundo_ponto_vloutvlr = JSON.parse(response.read_body)["calculo"]["vlOutvlr"]
-      result_segundo_ponto_contra = JSON.parse(response.read_body)["calculo"]["vlContra"]
-      result_segundo_ponto_seguro = JSON.parse(response.read_body)["calculo"]["vlSeguro"]
-      result_segundo_ponto_dtvct1ap = JSON.parse(response.read_body)["calculo"]["dtVct1ap"]
-      result_segundo_ponto_dtvctult = JSON.parse(response.read_body)["calculo"]["dtVctult"]
-      result_segundo_ponto_txam = JSON.parse(response.read_body)["calculo"]["txAm"]
-      result_segundo_ponto_txaa = JSON.parse(response.read_body)["calculo"]["txAa"]
-      result_segundo_ponto_txcetam = JSON.parse(response.read_body)["calculo"]["txCetAm"]
-      result_segundo_ponto_txcetaa = JSON.parse(response.read_body)["calculo"]["txCetAa"]
+       puts " meus valores #{session[:result_segundo_ponto_liquido] = JSON.parse(response.read_body)["calculo"]["vlLiquid"]}"
+       puts " meus valores #{session[:result_segundo_ponto_presta] = JSON.parse(response.read_body)["calculo"]["vlPresta"]}"
+       puts " meus valores #{session[:result_segundo_ponto_iof] = JSON.parse(response.read_body)["calculo"]["vlIof"]}"
+       puts " meus valores #{session[:result_segundo_ponto_tac] = JSON.parse(response.read_body)["calculo"]["vlTac"]}"
+       puts " meus valores #{session[:result_segundo_ponto_vloutvlr] = JSON.parse(response.read_body)["calculo"]["vlOutvlr"]}"
+       puts " meus valores #{session[:result_segundo_ponto_contra] = JSON.parse(response.read_body)["calculo"]["vlContra"]}"
+       puts " meus valores #{session[:result_segundo_ponto_seguro] = JSON.parse(response.read_body)["calculo"]["vlSeguro"]}"
+       puts " meus valores #{session[:result_segundo_ponto_dtvct1ap] = JSON.parse(response.read_body)["calculo"]["dtVct1ap"]}"
+       puts " meus valores #{session[:result_segundo_ponto_dtvctult] = JSON.parse(response.read_body)["calculo"]["dtVctult"]}"
+       puts " meus valores #{session[:result_segundo_ponto_txam] = JSON.parse(response.read_body)["calculo"]["txAm"]}"
+       puts " meus valores #{session[:result_segundo_ponto_txaa] = JSON.parse(response.read_body)["calculo"]["txAa"]}"
+       puts " meus valores #{session[:result_segundo_ponto_txcetam] = JSON.parse(response.read_body)["calculo"]["txCetAm"]}"
+       puts " meus valores #{session[:result_segundo_ponto_txcetaa] = JSON.parse(response.read_body)["calculo"]["txCetAa"]}"
       
-    
-        enviar(response_one,response,nome,email,cpf,telefone,valor,date,meses,result_segundo_ponto_dtvct1ap,result_segundo_ponto_dtvctult,result_segundo_ponto_contra,result_segundo_ponto_presta,result_segundo_ponto_iof,result_segundo_ponto_liquido,result_segundo_ponto_txaa,result_segundo_ponto_txam,result_segundo_ponto_txcetam,result_segundo_ponto_txcetaa)
-    
-    end
+      flash[:alert] = "Simulação concluída com Sucesso...!"
    
-    def enviar(response_one,response,nome,email,cpf,telefone,valor,date,meses,result_segundo_ponto_dtvct1ap,result_segundo_ponto_dtvctult,result_segundo_ponto_contra,result_segundo_ponto_presta,result_segundo_ponto_iof,result_segundo_ponto_liquido,result_segundo_ponto_txaa,result_segundo_ponto_txam,result_segundo_ponto_txcetam,result_segundo_ponto_txcetaa)
-       
-     puts "Salvando a Proposta"
-
-     #params[:commit].to_s == "Solicite seu Empréstimo"
-      #puts "enviando valores"
-      #terceiro_ponto(response_one,response,nome,email,cpf,telefone,valor,date,meses,result_segundo_ponto_dtvct1ap,result_segundo_ponto_dtvctult,result_segundo_ponto_contra,result_segundo_ponto_presta,result_segundo_ponto_iof,result_segundo_ponto_liquido,result_segundo_ponto_txaa,result_segundo_ponto_txam,result_segundo_ponto_txcetam,result_segundo_ponto_txcetaa)
-     #else
-      #flash[:alert] = "Proposta Enviada com Sucesso ! "
-    
-    url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
-
-    https = Net::HTTP.new(url.host, url.port);
-    https.use_ssl = true
-
-     request = Net::HTTP::Post.new(url)
-     request["XSRF-TOKEN"] = "#{cookies}"
-     request["Content-Type"] = "#{response_one["content-type"]} "
-     request["Authorization"] = "#{"Bearer"' '+response_one["auth"]}"
-     request.body = "{
-      \n\"principal\": {\n\"cdProdut\": \"3018\",
-      \n\"cdConven\":\"108\",
-      \n\"cdLoja\":\"108\",
-      \n\"nrCpfCnpj\": \"#{cpf.to_s}\",
-      \n\"qtPresta\": \"#{meses.to_i}\",
-      \n\"qtMescar\": \"0\",
-      \n\"dtContra\": \"#{date.to_date.strftime("%Y%m%d")}\",
-      \n\"dtVct1ap\": \"#{result_segundo_ponto_dtvct1ap}\",
-      \n\"dtVctult\": \"#{result_segundo_ponto_dtvctult}\",
-      \n\"vlContra\": \"#{result_segundo_ponto_contra}\",
-      \n\"vlPresta\": \"#{result_segundo_ponto_presta}\",
-      \n\"vlIofCob\": \"#{result_segundo_ponto_iof}\",
-      \n\"vlConces\": \"0.00\",
-      \n\"vlSeguro\": \"0\",
-      \n\"vlOutvlr\": \"0\",
-      \n\"vlTotal\":  \"#{result_segundo_ponto_liquido}\",
-      \n\"vlLiquid\": \"#{result_segundo_ponto_liquido}\",
-      \n\"txFinano\": \"#{result_segundo_ponto_txaa}\",
-      \n\"txRefCdc\": \"#{result_segundo_ponto_txam}\",
-      \n\"idCarctr\": \"30\",
-      \n\"txCetMes\": \"#{result_segundo_ponto_txcetam}\",
-      \n\"txCetAno\": \"#{result_segundo_ponto_txcetaa}\",
-      \n\"cdCvcons\": \"1000108\"\n},
-      \n\"fichaCadastralCliente\": {
-        \n\"cliente\": {
-           \n\"dsNome\": \"#{nome.to_s}\",
-           \n\"nrCpfCnpj\": \"#{cpf.to_s}\",
-           \n\"dsEmail\": \"#{email.to_s}\",
-           \n\"nrDDDCel\": \"86\",
-           \n\"nrCel\": \"#{telefone.to_s}\",
-           \n\"cdAutscr\": \"N\",
-           \n\n\"dadosProfissionais\": {
-             \n\"dsEmpres\": \"Pintos LTDA\",
-             \n\"nrCpfCnpj\": \"06837645000160\"\n}\n}\n}\n}\n"
-            
-     response = https.request(request)
-     puts response.read_body
-     puts JSON.parse(response.read_body)["status"]
-     puts JSON.parse(response.read_body)["globalMessage"]
-
-
-     puts @status = JSON.parse(response.read_body)["status"]
-     puts @status_message = JSON.parse(response.read_body)["globalMessage"]
-     puts @status_two = JSON.parse(response.read_body)["messages"][0]["message"]
-     nr_contrato = JSON.parse(response.read_body)["messages"][0]["message"]
-     
-     puts "MEU CONTRATO.."
-     puts '+++++++++++++++++++++++++++'
-     #puts @nr_contrato = nr_contrato 
-     puts "###########################"
-     
-     puts "minha acao de enviar --> "
-    
-     if params[:commit].to_s == "Enviar"
-      #puts @nr_contrato = nr_contrato.detect 
-      #puts "enviando valores"    
-      reenviar(response_one,cookies,nr_contrato,params[:nr_contrato]) 
-      puts @nr_contrato = nr_contrato.detect 
-    else
-      flash[:alert] = "Passo seguinte ---> Confirme o numero da proposta para enviar.! ) "
-      puts "DADOS NAO COLETADOS, #{@nr_contrato}"
     end 
-    
-    
-  
-    end
-   
-   def reenviar 
-
-    puts "MEU CONTRATO.."
-    puts '+++++++++++++++++++++++++++'
-    puts @nr_contrato
-    puts "###########################"
-
-    url = URI("https://officer.softsaaspin.com.br/BJ21M05/user")
-      
-    https = Net::HTTP.new(url.host, url.port);
-    https.use_ssl = true
-      
-    request = Net::HTTP::Get.new(url)
-    request.basic_auth("pincred","Daniel@2020")
-      
-    response_one = https.request(request)
-      
-    cookies = response_one['set-cookie']
-    content_type = response_one["content-type"]
-
-    puts response_one.code
-    puts response_one["auth"]
-    puts response_one["content-type"]
-    puts response_one.response['set-cookie']
-    puts response_one.read_body
-
-    nr_contrato = params[:nr_contrato]
-    descricao = params[:descricao] 
-    detalhe = params[:detalhe] 
-    doc = params[:doc]
-  
-    #doc = open("tmp/file.pdf")
-
-    doc = Base64.encode64("#{doc.to_s}")
-
-    doc = Base64.encode64(doc)
-    
-
-    puts "MINHA BASE 64"
-    puts "+++++++++++++++++++++++++++"
-    puts "#{doc}"
-    puts "###########################"
 
 
-    #@doc = doc
+   def enviar
 
-    
-    url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501A/incluirAnexo")
+     @dados = params[:dados]
 
-    https = Net::HTTP.new(url.host, url.port);
-    https.use_ssl = true
-    
-    request = Net::HTTP::Post.new(url)
-    #request["XSRF-TOKEN"] = "#{cookies}"
-    request["Content-Type"] = "#{response_one["content-type"]} "
-    request["Authorization"] = "#{"Bearer"' '+response_one["auth"]}"
-   
-    request.body = "{
-      \n\"nrProsp\": \"#{nr_contrato}\",
-      \n\"dsAnexo\": \"#{descricao}\",
-      \n\"nmArq\": \"#{detalhe}\",
-      \n\"imAnexo\": \"#{doc}\",
-      \n\"idCCB\": \"N\"\n}"
-    
-    response = https.request(request)
-    puts response.read_body
+     url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
+ 
+     https = Net::HTTP.new(url.host, url.port);
+     https.use_ssl = true
+ 
+      request = Net::HTTP::Post.new(url)
+      request["XSRF-TOKEN"] = "#{session[:set_cookies][11..46]}"
+      request["Content-Type"] = "#{session[:content_type]}"
+      request["Authorization"] = "#{"Bearer"' '+session[:auth]}"
+      request.body = "{
+       \n\"principal\": {\n\"cdProdut\": \"3018\",
+       \n\"cdConven\":\"108\",
+       \n\"cdLoja\":\"108\",
+       \n\"nrCpfCnpj\": \"#{@dados[2].to_s}\",
+       \n\"qtPresta\": \"#{@dados[6].to_i}\",
+       \n\"qtMescar\": \"0\",
+       \n\"dtContra\": \"#{@dados[5].to_s.gsub('-','')}\",
+       \n\"dtVct1ap\": \"#{session[:result_segundo_ponto_dtvct1ap]}\",
+       \n\"dtVctult\": \"#{session[:result_segundo_ponto_dtvctult]}\",
+       \n\"vlContra\": \"#{session[:result_segundo_ponto_contra]}\",
+       \n\"vlPresta\": \"#{session[:result_segundo_ponto_presta]}\",
+       \n\"vlIofCob\": \"#{session[:result_segundo_ponto_iof]}\",
+       \n\"vlConces\": \"0.00\",
+       \n\"vlSeguro\": \"0\",
+       \n\"vlOutvlr\": \"0\",
+       \n\"vlTotal\":  \"#{session[:result_segundo_ponto_liquido]}\",
+       \n\"vlLiquid\": \"#{session[:result_segundo_ponto_liquido]}\",
+       \n\"txFinano\": \"#{session[:result_segundo_ponto_txaa]}\",
+       \n\"txRefCdc\": \"#{session[:result_segundo_ponto_txam]}\",
+       \n\"idCarctr\": \"30\",
+       \n\"txCetMes\": \"#{session[:result_segundo_ponto_txcetam]}\",
+       \n\"txCetAno\": \"#{session[:result_segundo_ponto_txcetaa]}\",
+       \n\"cdCvcons\": \"1000108\"\n},
+       \n\"fichaCadastralCliente\": {
+         \n\"cliente\": {
+            \n\"dsNome\": \"#{@dados[0].to_s}\",
+            \n\"nrCpfCnpj\": \"#{@dados[2].to_s}\",
+            \n\"dsEmail\": \"#{@dados[1].to_s}\",
+            \n\"nrDDDCel\": \"86\",
+            \n\"nrCel\": \"#{@dados[3].to_s}\",
+            \n\"cdAutscr\": \"N\",
+            \n\n\"dadosProfissionais\": {
+              \n\"dsEmpres\": \"Pintos LTDA\",
+              \n\"nrCpfCnpj\": \"06837645000160\"\n}\n}\n}\n}\n"
+             
+      response = https.request(request)
+      puts response.code
+      puts response.read_body
+      puts JSON.parse(response.read_body)["status"]
+      puts JSON.parse(response.read_body)["globalMessage"]
+      puts JSON.parse(response.read_body)["messages"]
+ 
+ 
+      status = JSON.parse(response.read_body)["status"]
+      status_message = JSON.parse(response.read_body)["globalMessage"]
+      status_two = JSON.parse(response.read_body)["messages"][0]["message"]
 
-    puts "================================="
-     puts "AQUI....#{nr_contrato.to_s}"
-     puts response.code
-     puts "#{"Bearer"' '+response_one["auth"]}"
-     puts "#{cookies}"
-     puts response_one["content-type"]
-     puts response_one['set-cookie']
-     puts response_one["XSRF-TOKEN"]
-    puts "+++++++++++++++++++++++++++++++++"
+      if response.code == "400"
+       redirect_to "/simulador-de-consignado" , 
+        notice: " Algo não saiu como o esperado,Tente Novamente! #{ status },#{ status_message },#{status_two }"
+      else
+       redirect_to "/simulador-de-consignado" , 
+        notice: "Simulação, concluída com Sucesso ! Prazo para retorno de 48 a 72 horas! Numero do Processo: #{ status }, Situação: #{ status_message }"
+      end
+     
+       
+   end 
 
-    redirect_to "/simulador-de-consignado" , notice: 'Simulação, concluida com sucesso ! Prazo para retorno de 48 a 72 horas!'
+   private 
+
+   def verify_proposta 
 
    end
     
 end
+
+

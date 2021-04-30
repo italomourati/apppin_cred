@@ -22,7 +22,7 @@ class Page::CalcController < PageController
     
     response_one.code
     session[:auth] = response_one["auth"]
-    session[:auth]
+    puts session[:auth]
     session[:content_type] = response_one["content-type"]
     session[:content_type]
     response_one.response['set-cookie']

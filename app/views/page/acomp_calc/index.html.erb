@@ -1,0 +1,148 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Acompanhamento de Consignado - PINCRED </title>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 1080px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style> 
+    
+  </head> 
+
+  <body class="bg-light"> 
+  
+    <div class="container">
+   <div class="py-5 text-center">
+    <%#= image_tag("logo_pincred.png", size: "300x200", class: "d-block mx-auto mb-4")%>
+    <h2> Acompanhamento de Consignado </h2>
+  </div>
+  <% if flash[:notice].present? %>
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong><%= flash[:notice] %>  </strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
+  <div class="row">
+
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3"> Dados do Cliente </h4>
+      <form class="needs-validation" novalidate>
+        <%= form_tag page_acomp_calc_index_path do %>
+      
+        <div class="row">
+          <div class="col-md-4 mb-3">
+         <div class="mb-3">
+          <label for="valor"> Informe o CPF: <span class="text-muted">* </span></label> 
+          <%= text_field_tag :cpf , "", class: 'form-control', placeholder: 'Apenas Numeros', required: true  %>
+        </div>
+
+          </div>
+          <div class="form-group col-md-3">
+            <label for="address2"> Data da Solicitação <span class="text-muted"> </span></label>
+          <%= date_field_tag :date_ini, "", class: 'form-control' %>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="address2"> Data Final <span class="text-muted"> </span></label>
+            <%= date_field_tag :date_fim , Date.today , class: 'form-control' , readonly: true %>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+           
+          </div>
+        </div>
+        
+        <hr class="mb-2">
+        <%= submit_tag "Enviar" , class: 'btn btn-primary btn-lg btn-block' , data: { disable_with: 'Aguarde...! ' }%>
+      </form>
+    </div>
+  </div>
+</div>
+
+<% end %> 
+
+<br/>
+<br/>
+<br/>
+<br/>
+<% if @result_propostas.present? == true %> 
+ <div class="container">
+
+ <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-3"> Resultado da Consulta: </h4>
+      
+ </h4>
+ <% if flash_message.present? == true %>
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>
+   <p> Informativo: <%= flash_message %> </p> 
+  </strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Proposta</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <% @result_propostas.each do |proposta|%> 
+  <tbody>
+    <% if params[:cpf] == proposta["nrCpfCnpj"] %>
+  <tr>
+    <th scope="row"><%= proposta["nrProsp"] %> </th>
+    <td> <%= proposta["nmClient"] %> </td>
+    <td> <%= proposta["nrCpfCnpj"]%> </td>
+    <td> <%= "R$ #{proposta["vlSolic"].real}" %> </td>
+    <td> <%= proposta["dsStatus"]%> </td>
+  </tr>
+   <% end %> 
+  </tbody>
+  <% end %>
+</table>
+
+<% end %>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019 PINCRED - SOLUÇÕES FINANCEIRAS - BY CI PINTOS </p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="http://www.pincred.com.br">Acessar so Site</a></li>
+      <li class="list-inline-item"><a href="#">Suporte </a></li>
+    </ul>
+  </footer>
+</div>
+
+</html>
+

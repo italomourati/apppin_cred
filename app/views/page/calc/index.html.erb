@@ -329,6 +329,56 @@
       <li class="list-inline-item"><a href="http://www.pincred.com.br">Acessar so Site</a></li>
       <li class="list-inline-item"><a href="#">Suporte </a></li>
     </ul>
+    <style> 
+      #btn_flutuante{
+        position:fixed;
+        right:0;
+        bottom:0;
+        display:block;
+        cursor:pointer;
+        z-index:9999999;
+        float:right,
+        }
+      #btn_flutuante2{
+        position:fixed;
+        right:0;
+        bottom:0;
+        display:block;
+        cursor:pointer;
+        z-index:9999999;
+        float:right;
+        display:none} 
+        @media only screen and (max-width: 999px) and (min-width: 100px)
+        {
+      #imagem_whats{display:none}
+      #imagem_whats2{display:block}}
+      #teste_float{ position:fixed;
+        right:0;
+        bottom:0;
+        display:inline;
+        cursor:pointer;
+        z-index:9999999;
+        float:right;
+        margin-right: 90px;
+        margin-bottom: 20px;
+        color: #FFFF;
+        border-radius:4px;
+        border:1px solid #004668;
+        box-shadow: inset 0 2px 3px 0 rgb(40, 107, 231), inset 0 -3px 6px 0 rgb(45, 88, 214);
+        background-color: #0094ca;
+        padding: 3px;
+       }
+    </style>
+    <a id="teste_float" href="/acompanhamento-consignado"> ACOMPANHE SUA SOLICITAÇÃO </a> 
+     <img id="btn_flutuante" src="https://img.icons8.com/color/80/000000/sell-property.png"
+          onClick="window.open('/acompanhamento-consignado', '_blank');">
+     <img id="btn_flutuante2" src="https://img.icons8.com/color/80/000000/sell-property.png"
+          onClick="window.open('/acompanhamento-consignado', '_blank');">
+      <div class="preloader"> 
+        <div class="preloaderimg">
+        </div>
+      </div>
+      
   </footer>
 </div>
 

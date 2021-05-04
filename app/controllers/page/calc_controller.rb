@@ -157,17 +157,16 @@ class Page::CalcController < PageController
       
       JSON.parse(response.read_body)
 
-      @result_propostas = JSON.parse(response.read_body)["propostas"]
-    
+      @result_propostas = JSON.parse(response.read_body)["propostas"] 
+
       @result_propostas.try(:each) do |proposta| 
-      if @dados[2].to_s == proposta["nrCpfCnpj"]
+      if @dados[2].to_s == proposta["nrCpfCnpj"] && @dados[4].gsub('.','').gsub(',','.').to_f == proposta["vlSolic"]
         puts "#Action VERIFY_PROPOSTA"
         puts @dados[2].to_s
+        puts @dados[4].gsub('.','').gsub(',','.').to_f
         puts proposta["nrCpfCnpj"]
-        redirect_to '/simulador-de-consignado', notice: 'Simulação já realizada'
-      end     
-    end
-
+        puts proposta["vlSolic"]
+      else
      url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
  
      https = Net::HTTP.new(url.host, url.port);
@@ -232,8 +231,13 @@ class Page::CalcController < PageController
        redirect_to "/simulador-de-consignado" , 
         notice: "Simulação, concluída com Sucesso ! Prazo para retorno de 48 a 72 horas! Numero do Processo: #{ status_two }, Situação: #{ status_message }"
       end
+    end 
+  end
     
-       
+  respond_to do |format| 
+    format.html    { redirect_to(simulador_de_consignado_path,notice: 'CPF já cadastrado')}
+  end
+ 
    end 
 
    private 

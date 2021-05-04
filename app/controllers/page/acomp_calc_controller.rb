@@ -36,7 +36,7 @@ class Page::AcompCalcController < PageController
 
     def segundo_ponto(response_one,cookies,cpf,date_ini,date_fim)
   
-      url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501E/consultarProposta")
+      url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501E/consultarProposta")
 
       https = Net::HTTP.new(url.host, url.port);
       https.use_ssl = true

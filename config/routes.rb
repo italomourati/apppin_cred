@@ -150,6 +150,8 @@ Rails.application.routes.draw do
   #post '/simulador-de-consignado', to: 'page/calc#enviar'
   get 'page/calc/enviar'
   post 'page/calc/enviar'
+  get 'page/calc/verify_proposta'
+  post 'page/calc/verify_proposta'
   post '/simulador-de-consignado', to: 'page/calc#reenviar'
   get 'informacao-pdf' , to: 'page/standby#index'
   get '/simulador-de-cdc', to: 'page/calc_two#index'

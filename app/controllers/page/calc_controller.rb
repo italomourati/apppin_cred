@@ -2,15 +2,15 @@ class Page::CalcController < PageController
   require "uri"
   require "net/http"
   require "base64"
-  require 'brdinheiro'
-  require 'brdata'
-  before_action :verify_proposta, only:[:enviar]
+  require "brdinheiro"
+  require "brdata"
+  #before_action :verify_proposta, :action => [:enviar]
 
   def index 
 
     @users_office_footers = UsersOffice::Footer.all
      
-    url = URI("https://officer.softsaaspin.com.br/BJ21M05/user")
+    url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/user")
       
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true
@@ -40,7 +40,7 @@ class Page::CalcController < PageController
 
     def segundo_ponto(response_one,cookies,nome,email,cpf,telefone,valor,date,meses)
   
-      url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
+      url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501C/calcProsp")
 
       https = Net::HTTP.new(url.host, url.port);
       https.use_ssl = true
@@ -116,6 +116,10 @@ class Page::CalcController < PageController
        puts " meus valores #{session[:result_segundo_ponto_txaa] = JSON.parse(response.read_body)["calculo"]["txAa"]}"
        puts " meus valores #{session[:result_segundo_ponto_txcetam] = JSON.parse(response.read_body)["calculo"]["txCetAm"]}"
        puts " meus valores #{session[:result_segundo_ponto_txcetaa] = JSON.parse(response.read_body)["calculo"]["txCetAa"]}"
+
+       session[:cpf] = cpf.to_s
+       session[:valor] = valor.gsub('.','').gsub(',','.').to_f
+       session[:date] = date.to_date.strftime("%Y%m%d")
       
       flash[:alert] = "Simulação concluída com Sucesso...!"
    
@@ -124,9 +128,47 @@ class Page::CalcController < PageController
 
    def enviar
 
-     @dados = params[:dados]
+     @dados = params[:dados] 
 
-     url = URI("https://officer.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
+     url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501E/consultarProposta")
+
+      https = Net::HTTP.new(url.host, url.port);
+      https.use_ssl = true
+
+      request = Net::HTTP::Post.new(url)
+      request["XSRF-TOKEN"] = "#{session[:set_cookies][11..46]}"
+      request["Content-Type"] = "#{session[:content_type]}"
+      request["Authorization"] = "#{"Bearer"' '+session[:auth]}"
+      request.body = "{
+        \n\"nrInst\":\"1368\",
+        \n\"nrAgen\":\"19\",
+        \n\"cdConven\":\"108\",
+        \n\"cdFilial\":\"\",
+        \n\"cdAgente\":\"\",
+        \n\"nmLogin\":\"pincred\",
+        \n\"nrStatus\":\"\",
+        \n\"nrCPFCNPJ\":\"#{@dados[2].to_s}\",
+        \n\"nrPropos\":\"\",
+        \n\"dtPerIni\":\"#{@dados[5].to_s.gsub('-','')}\",
+        \n\"dtPerFim\":\"#{Date.today}\"\n}"
+
+      response = https.request(request)
+      response.read_body
+      
+      JSON.parse(response.read_body)
+
+      @result_propostas = JSON.parse(response.read_body)["propostas"]
+    
+      @result_propostas.try(:each) do |proposta| 
+      if @dados[2].to_s == proposta["nrCpfCnpj"]
+        puts "#Action VERIFY_PROPOSTA"
+        puts @dados[2].to_s
+        puts proposta["nrCpfCnpj"]
+        redirect_to '/simulador-de-consignado', notice: 'Simulação já realizada'
+      end     
+    end
+
+     url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501H/cadastrarProposta")
  
      https = Net::HTTP.new(url.host, url.port);
      https.use_ssl = true
@@ -161,7 +203,7 @@ class Page::CalcController < PageController
        \n\"cdCvcons\": \"1000108\"\n},
        \n\"fichaCadastralCliente\": {
          \n\"cliente\": {
-            \n\"dsNome\": \"#{@dados[0].to_s}\",
+            \n\"dsNome\": \"#{@dados[0].upcase.to_s}\",
             \n\"nrCpfCnpj\": \"#{@dados[2].to_s}\",
             \n\"dsEmail\": \"#{@dados[1].to_s}\",
             \n\"nrDDDCel\": \"86\",
@@ -186,11 +228,11 @@ class Page::CalcController < PageController
       if response.code == "400"
        redirect_to "/simulador-de-consignado" , 
         notice: " Algo não saiu como o esperado,Tente Novamente! #{ status },#{ status_message },#{status_two }"
-      else
+      elsif 
        redirect_to "/simulador-de-consignado" , 
-        notice: "Simulação, concluída com Sucesso ! Prazo para retorno de 48 a 72 horas! Numero do Processo: #{ status }, Situação: #{ status_message }"
+        notice: "Simulação, concluída com Sucesso ! Prazo para retorno de 48 a 72 horas! Numero do Processo: #{ status_two }, Situação: #{ status_message }"
       end
-     
+    
        
    end 
 
@@ -198,8 +240,54 @@ class Page::CalcController < PageController
 
    def verify_proposta 
 
-   end
+  
+     url = URI("https://officerhomol.softsaaspin.com.br/BJ21M05/BJ21M05/BJ21SS0501E/consultarProposta")
+
+      https = Net::HTTP.new(url.host, url.port);
+      https.use_ssl = true
+
+      request = Net::HTTP::Post.new(url)
+      request["XSRF-TOKEN"] = "#{session[:set_cookies][11..46]}"
+      request["Content-Type"] = "#{session[:content_type]}"
+      request["Authorization"] = "#{"Bearer"' '+session[:auth]}"
+      request.body = "{
+        \n\"nrInst\":\"1368\",
+        \n\"nrAgen\":\"19\",
+        \n\"cdConven\":\"108\",
+        \n\"cdFilial\":\"\",
+        \n\"cdAgente\":\"\",
+        \n\"nmLogin\":\"pincred\",
+        \n\"nrStatus\":\"\",
+        \n\"nrCPFCNPJ\":\"#{@dados[2].to_s}\",
+        \n\"nrPropos\":\"\",
+        \n\"dtPerIni\":\"#{Date.today}\",
+        \n\"dtPerFim\":\"#{Date.today}\"\n}"
+
+      response = https.request(request)
+      response.read_body
+      
+      JSON.parse(response.read_body)
+
+      @result_propostas = JSON.parse(response.read_body)["propostas"]
     
+      @result_propostas.try(:each) do |proposta| 
+      if @dados[2].to_s == proposta["nrCpfCnpj"]
+        puts "#Action VERIFY_PROPOSTA"
+        return'/simulador-de-consignado', notice: 'Simulação já realizada'
+      end
+               
+    end
+
+   
+        
+     #@result_propostas.each do |proposta|
+     #  if session[:cpf].to_i == proposta["nrCpfCnpj"].to_i && session[:valor] == proposta["vlSolic"] 
+     #     && session[:date] == proposta["dtPerIni"]
+     #  return page_calc_index_path, 
+     #     notice: 'Solicitação já realizada, Favor ... consultar status de sua proposta'
+     #  end
+     #end      
+        end 
 end
 
 
